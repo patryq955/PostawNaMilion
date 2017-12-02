@@ -10,7 +10,7 @@
                 <li>@Html.ActionLink("Informacje", "Index", "AdminManage")</li>
                 <li>@Html.ActionLink("Kategorie", "Category", "AdminManage")</li>
                 <li>@Html.ActionLink("Dodaj Kategorie", "AddCategory", "AdminManage")</li>
-                <li>@Html.ActionLink("Dodaj Pytanie", "AddQuestion", "AdminManageUser")</li>
+                <li>@Html.ActionLink("Dodaj Pytanie", "AddQuestion", "AdminManage")</li>
                 <li>@Html.ActionLink("Użytkownicy", "Index", "AdminManageUser")</li>
 
             </ul>
@@ -21,3 +21,7 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+    }
