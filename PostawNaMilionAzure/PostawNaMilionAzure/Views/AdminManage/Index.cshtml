@@ -1,0 +1,31 @@
+﻿@model IEnumerable<PostawNaMilionAzure.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Administracja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-sm-12">
+            <ul class="nav navbar-btn nav-admin-manage">
+                <li>@Html.ActionLink("Użytkownicy", "Index", "AdminManageUser")</li>
+                <li>@Html.ActionLink("Kategorie", "Category", "AdminManage")</li>
+                <li>@Html.ActionLink("Dodaj Kategorie", "AddCategory", "AdminManage")</li>
+                <li>@Html.ActionLink("Dodaj Pytanie", "AddQuestion", "AdminManageUser")</li>
+                <li>@Html.ActionLink("Użytkownicy", "AddQuestion", "AdminManageUser")</li>
+
+            </ul>
+        </div>
+        <div class="col-md-10 col-sm-12">
+            <div class="table-bordered">
+                <table>
+                    @foreach()
+                    {
+
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

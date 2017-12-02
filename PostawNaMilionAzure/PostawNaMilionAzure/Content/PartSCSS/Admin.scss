@@ -1,0 +1,22 @@
+﻿@import "Variables";
+@import "Helpers";
+
+
+.nav-admin-manage
+{
+    background-color:rgba(217, 236, 236, 0.55);
+
+    a{
+        
+    }
+    ul{
+        li{
+            a{
+                color:black !important;
+            }
+        }
+    }
+    li:hover{
+        background-color:red;
+    }
+}

@@ -198,7 +198,7 @@ namespace PostawNaMilionAzure.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        public async Task<ActionResult> ForgotPassword(ForgotViewModel model)
         {
             if (ModelState.IsValid)
             {

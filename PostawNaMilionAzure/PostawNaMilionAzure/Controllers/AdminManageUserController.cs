@@ -10,22 +10,18 @@ using System.Web.Mvc;
 
 namespace PostawNaMilionAzure.Controllers
 {
-    public class AdminController : Controller
+    public class AdminManageUserController : Controller
     {
         // GET: Admin
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
-        //Get: Main page 
-        public ActionResult Index()
-        {
-            return View();
-        }
+
 
         // GET: AdminManagUser
-        public ActionResult ManageUser()
+        public ActionResult Index()
         {
-            return View(db.Users.Where(x => x.Id != "d67b7d7d-83f9-4ec0-aa8c-90f083aaeaf4").ToList());
+            return View(db.Users.Where(x => x.Id != "2f94a417-4a2d-4161-aa5a-fa20557490ff").ToList());
         }
 
         // GET: AdminManagUser/Details/5

@@ -109,7 +109,7 @@ namespace PostawNaMilionAzure.Models
         public string Code { get; set; }
     }
 
-    public class ForgotPasswordViewModel
+    public class PostawNaMilionAzure
     {
         [Required]
         [EmailAddress]
