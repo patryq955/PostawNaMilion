@@ -1,0 +1,38 @@
+﻿@model IEnumerable<PostawNaMilionAzure.Models.ApplicationUser>
+
+<div class="panel">
+    <div class="panel-heading">
+        <h2> Ostanio zarejestrowani użytkownicy</h2>
+    </div>
+    <div class="panel-body">
+        @if (!ViewBag.IsRegisterUser)
+        {
+            <div>Brak zarejestrowanych użytkowników</div>
+        }
+        else
+        {
+            <table class="table table-condensed">
+                <tr>
+                    <th>
+                        Nazwa użytkownika
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th>
+                        Numer Telefonu
+                    </th>
+                </tr>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => user.Logins)</td>
+                        <td>@Html.DisplayFor(x => user.Email)</td>
+                        <td>@Html.DisplayFor(x => user.PhoneNumber)</td>
+                    </tr>
+                }
+            </table>
+        }
+    </div>
+</div>
+

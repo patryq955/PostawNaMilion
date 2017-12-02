@@ -1,4 +1,75 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@section css{
+<link href="~/Content/owl.carousel.css" rel="stylesheet" />
+    
+    }
+<div class="row">
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <img src="~/AppImage/maxresdefault.jpg" />
+            <div class="carousel-content">
+                <p>Spróbuj Sił</p>
+            </div>
+        </div>
+        <div class="item">
+            <img src="~/AppImage/MW-DK630_cash_ZG_20150428132718.jpg" />
+        </div>
+    </div>
+</div>
 
+<div class="row three-elements">
+    <div class="col-lg-4 col-sm-12">s</div>
+    <div class="col-lg-4 col-sm-12">s</div>
+    <div class="col-lg-4 col-sm-12">s</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+@section scripts{
+    <script src="~/Scripts/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                navText: ['<img src="/AppImage/if_arrow_left_alt1_118748.svg"/>', '<img src="/AppImage/if_arrow_right_alt1_118746.svg" />'],
+                autoHeight: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            })
+            var owl = $('.owl-carousel');
+            owl.owlCarousel();
+            // Go to the next item
+            $('.customNextBtn').click(function () {
+                owl.trigger('next.owl.carousel');
+            })
+            // Go to the previous item
+            $('.customPrevBtn').click(function () {
+                // With optional speed parameter
+                // Parameters has to be in square bracket '[]'
+                owl.trigger('prev.owl.carousel', [300]);
+            })
+        });
+
+    </script>
+}

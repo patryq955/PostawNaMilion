@@ -10,13 +10,11 @@ using System.Web.Mvc;
 
 namespace PostawNaMilionAzure.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminManageUserController : Controller
     {
         // GET: Admin
         private ApplicationDbContext db = new ApplicationDbContext();
-
-
-
 
         // GET: AdminManagUser
         public ActionResult Index()
