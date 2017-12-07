@@ -7,14 +7,12 @@ using System.Web;
 
 namespace PostawNaMilionAzure.Models
 {
-    [Table("KnowledgeArea")]
-    public class KnowledgeArea 
+    [Table("Role")]
+    public class Role
     {
         [Key]
-        public int Id { get ; set; }
+        public int Id { get; set; }
         [StringLength(300)]
         public String Name { get; set; }
-        [StringLength(300)]
-        public String Description { get; set; }
     }
 }

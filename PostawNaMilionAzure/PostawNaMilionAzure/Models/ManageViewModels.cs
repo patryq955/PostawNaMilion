@@ -28,14 +28,14 @@ namespace PostawNaMilionAzure.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "Hasło {0} musi mieć długość {2}.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Nowe hasło")]
+        [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź nowe hasło")]
-        [Compare("NewPassword", ErrorMessage = "Nowe hasło nie jest takie same")]
+        [Display(Name = "Confirm new password")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -43,34 +43,18 @@ namespace PostawNaMilionAzure.Models
     {
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Obecne hasło")]
+        [Display(Name = "Current password")]
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Hasło {0} musi mieć długość {2}.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Nowe hasło")]
+        [Display(Name = "New password")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź nowe hasło")]
-        [Compare("NewPassword", ErrorMessage = "Nowe hasło nie jest takie same")]
-        public string ConfirmPassword { get; set; }
-    }
-
-    public class ChangePasswordOtherUserViewModel
-    {
-        public string UserID { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Hasło {0} musi mieć długość {2}.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Nowe hasło")]
-        public string NewPassword { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Potwierdź nowe hasło")]
-        [Compare("NewPassword", ErrorMessage = "Nowe hasło nie jest takie same")]
+        [Display(Name = "Confirm new password")]
+        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
     }
 
@@ -78,19 +62,19 @@ namespace PostawNaMilionAzure.Models
     {
         [Required]
         [Phone]
-        [Display(Name = "Numer Telefonu")]
+        [Display(Name = "Phone Number")]
         public string Number { get; set; }
     }
 
     public class VerifyPhoneNumberViewModel
     {
         [Required]
-        [Display(Name = "Kod")]
+        [Display(Name = "Code")]
         public string Code { get; set; }
 
         [Required]
         [Phone]
-        [Display(Name = "Numer telefonu")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }
 
