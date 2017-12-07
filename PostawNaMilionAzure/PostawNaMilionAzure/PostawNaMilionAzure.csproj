@@ -207,6 +207,12 @@
     <Compile Include="Migrations\201711291740309_InitialAcount.Designer.cs">
       <DependentUpon>201711291740309_InitialAcount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712062059279_InitMigration.cs" />
+    <Compile Include="Migrations\201712062059279_InitMigration.Designer.cs" />
+    <Compile Include="Migrations\201712062109124_InitMigrationString.cs" />
+    <Compile Include="Migrations\201712062109124_InitMigrationString.Designer.cs" />
+    <Compile Include="Migrations\201712062128440_AddNewTable.cs" />
+    <Compile Include="Migrations\201712062128440_AddNewTable.Designer.cs" />
     <Compile Include="Migrations\201712062229124_InitMigrationString.cs" />
     <Compile Include="Migrations\201712062229124_InitMigrationString.Designer.cs">
       <DependentUpon>201712062229124_InitMigrationString.cs</DependentUpon>
@@ -229,7 +235,9 @@
     <Compile Include="Repository\CategoryDictRepository.cs" />
     <Compile Include="Repository\KnowledgeAreaRepository.cs" />
     <Compile Include="Repository\QuestionRepository.cs" />
+    <Compile Include="Repository\UsersRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\UsersRoleView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

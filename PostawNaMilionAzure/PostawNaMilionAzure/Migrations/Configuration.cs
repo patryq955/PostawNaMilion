@@ -5,14 +5,14 @@ namespace PostawNaMilionAzure.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PostawNaMilionAzure.DAL.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PostawNaMilionAzure.Models.AzureContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PostawNaMilionAzure.DAL.ApplicationDbContext context)
+        protected override void Seed(PostawNaMilionAzure.Models.AzureContext context)
         {
             //  This method will be called after migrating to the latest version.
 
