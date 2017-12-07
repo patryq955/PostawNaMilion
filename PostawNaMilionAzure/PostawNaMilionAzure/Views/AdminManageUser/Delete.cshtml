@@ -1,0 +1,25 @@
+﻿@model PostawNaMilionAzure.Models.ApplicationUser
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Usuwanie użytkownika";
+}
+<div class="manage-user container">
+    <h2>Usuwanie</h2>
+
+    <h3>Czy napewno chcesz usunąć użytkownika @Model.UserName?</h3>
+    <div>
+        <hr />
+       
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Usuń" class="btn btn-default" /> |
+                @Html.ActionLink("Wróć", "Index", "AdminManageUser", null, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>

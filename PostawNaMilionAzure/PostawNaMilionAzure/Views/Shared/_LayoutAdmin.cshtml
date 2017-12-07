@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Administracja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-sm-12">
+            <ul class="nav navbar-btn nav-admin-manage">
+                <li>@Html.ActionLink("Informacje", "Index", "AdminManage")</li>
+                <li>@Html.ActionLink("Kategorie", "Category", "AdminManage")</li>
+                <li>@Html.ActionLink("Dodaj Kategorie", "AddCategory", "AdminManage")</li>
+                <li>@Html.ActionLink("Dodaj Pytanie", "AddQuestion", "AdminManage")</li>
+                <li>@Html.ActionLink("Użytkownicy", "Index", "AdminManageUser")</li>
+
+            </ul>
+        </div>
+        <div class="col-md-10 col-sm-12">
+            @RenderBody()
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @RenderSection("scripts", required: false)
+    }
