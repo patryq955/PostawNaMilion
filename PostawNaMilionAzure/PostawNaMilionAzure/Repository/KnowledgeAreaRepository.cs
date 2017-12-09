@@ -1,52 +1,56 @@
 ﻿using PostawNaMilionAzure.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace PostawNaMilionAzure.Repository
 {
-    public class KnowledgeAreaRepository
+    public class KnowledgeAreaRepository : IRepository<KnowledgeArea>
     {
-
-        public static List<KnowledgeArea> Get()
+        AzureContext db;
+        public KnowledgeAreaRepository()
         {
-            using (var db = new AzureContext())
-                return db.KnowledgeArea.ToList();
+            db = new AzureContext();
         }
 
-        public static KnowledgeArea  GetById(int Id)
+        public void Add(KnowledgeArea entity)
         {
-            using (var db = new AzureContext())
-                return db.KnowledgeArea.Where(x=>x.Id == Id).FirstOrDefault();
+            db.KnowledgeArea.Add(entity);
+            Save();
         }
 
-        public static void CreateOrUpdate(KnowledgeArea  knowledgeArea)
+        public void Delete(KnowledgeArea entity)
         {
-            using (var db = new AzureContext()) {
-                if (knowledgeArea.Id != 0)
-                {
-                    db.Entry(knowledgeArea).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
-                }
-                else
-                {
-                    db.KnowledgeArea.Add(knowledgeArea);
-                    db.SaveChanges();
-                }
-            }
+            db.KnowledgeArea.Remove(entity);
+            Save();
         }
 
-        public static void Delete(int Id)
+        public KnowledgeArea GetID(int Id)
         {
-            var delObject = GetById(Id);
-            if(delObject != null)
-            using (var db = new AzureContext())
+            return db.KnowledgeArea.Where(x => x.Id == Id).FirstOrDefault();
+        }
+
+        public IEnumerable<KnowledgeArea> GetOverview(Func<KnowledgeArea, bool> predicate = null)
+        {
+            if (predicate == null)
             {
-                db.KnowledgeArea.Remove(delObject);
-                db.SaveChanges();
+                return db.KnowledgeArea;
             }
+
+            return db.KnowledgeArea.Where(predicate);
         }
 
+        public void Update(KnowledgeArea entity)
+        {
+            db.Entry(entity).State = EntityState.Modified;
+            Save();
+        }
+
+        private void Save()
+        {
+            db.SaveChanges();
+        }
     }
 }

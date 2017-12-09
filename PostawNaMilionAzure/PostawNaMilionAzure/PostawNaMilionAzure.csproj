@@ -235,6 +235,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -248,7 +249,6 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DAL\DbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -258,6 +258,10 @@
     <Compile Include="Migrations\201712062109124_InitMigrationString.Designer.cs" />
     <Compile Include="Migrations\201712062128440_AddNewTable.cs" />
     <Compile Include="Migrations\201712062128440_AddNewTable.Designer.cs" />
+    <Compile Include="Migrations\201712091043067_InitUserControl.cs" />
+    <Compile Include="Migrations\201712091043067_InitUserControl.Designer.cs">
+      <DependentUpon>201712091043067_InitUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
@@ -269,15 +273,14 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
-    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\UserRate.cs" />
-    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AnswerRepository.cs" />
     <Compile Include="Repository\CategoryDictRepository.cs" />
+    <Compile Include="Repository\IExtendRepository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\KnowledgeAreaRepository.cs" />
     <Compile Include="Repository\QuestionRepository.cs" />
-    <Compile Include="Repository\UsersRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\QuestionAnserView.cs" />
     <Compile Include="ViewModel\UsersRoleView.cs" />
@@ -404,6 +407,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712062128440_AddNewTable.resx">
       <DependentUpon>201712062128440_AddNewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712091043067_InitUserControl.resx">
+      <DependentUpon>201712091043067_InitUserControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

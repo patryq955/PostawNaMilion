@@ -1,8 +1,5 @@
-﻿using PostawNaMilionAzure.DAL;
-using System;
-using System.Collections.Generic;
+﻿using PostawNaMilionAzure.Models;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PostawNaMilionAzure.Controllers
@@ -11,7 +8,7 @@ namespace PostawNaMilionAzure.Controllers
     public class AdminManageController : Controller
     {
 
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AzureContext db = new AzureContext();
         //Get: Main page 
         public ActionResult Index()
         {

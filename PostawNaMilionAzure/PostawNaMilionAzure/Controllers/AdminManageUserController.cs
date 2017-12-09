@@ -1,12 +1,10 @@
-﻿using PostawNaMilionAzure.DAL;
-using PostawNaMilionAzure.Models;
-using System;
-using System.Collections.Generic;
+﻿using PostawNaMilionAzure.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using System;
+
 
 namespace PostawNaMilionAzure.Controllers
 {
@@ -14,11 +12,12 @@ namespace PostawNaMilionAzure.Controllers
     public class AdminManageUserController : Controller
     {
         // GET: Admin
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AzureContext db = new AzureContext();
 
         // GET: AdminManagUser
         public ActionResult Index()
         {
+        
             return View(db.Users.Where(x => x.Id != "2f94a417-4a2d-4161-aa5a-fa20557490ff").ToList());
         }
 

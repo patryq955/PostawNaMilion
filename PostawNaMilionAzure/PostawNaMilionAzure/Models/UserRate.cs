@@ -17,5 +17,6 @@ namespace PostawNaMilionAzure.Models
         public int RateAnswer2 { get; set; }
         public int RateAnswer3 { get; set; }
         public int RateAnswer4 { get; set; }
+        
     }
 }

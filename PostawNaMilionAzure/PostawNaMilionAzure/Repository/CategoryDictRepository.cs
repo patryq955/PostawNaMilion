@@ -1,23 +1,55 @@
 ﻿using PostawNaMilionAzure.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace PostawNaMilionAzure.Repository
 {
-    public class CategoryDictRepository
+    public class CategoryDictRepository : IRepository<CategoryDict>
     {
-        public static List<CategoryDict> Get()
+        AzureContext db;
+        public CategoryDictRepository()
         {
-            using (var db = new AzureContext())
-                return db.CategoryDict.ToList();
+            db = new AzureContext();
+        }
+        public void Add(CategoryDict entity)
+        {
+            db.CategoryDict.Add(entity);
+            Save();
         }
 
-        public static CategoryDict GetById(int Id)
+        public void Delete(CategoryDict entity)
         {
-            using (var db = new AzureContext())
-                return db.CategoryDict.Where(x => x.Id == Id).FirstOrDefault();
+            db.CategoryDict.Remove(entity);
+            Save();
+        }
+
+        public CategoryDict GetID(int Id)
+        {
+            return db.CategoryDict.Where(x => x.Id == Id).FirstOrDefault();
+        }
+
+        public IEnumerable<CategoryDict> GetOverview(Func<CategoryDict, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return db.CategoryDict;
+            }
+
+            return db.CategoryDict.Where(predicate);
+        }
+
+        public void Update(CategoryDict entity)
+        {
+            db.Entry(entity).State = EntityState.Modified;
+            Save();
+        }
+
+        private void Save()
+        {
+            db.SaveChanges();
         }
     }
 }

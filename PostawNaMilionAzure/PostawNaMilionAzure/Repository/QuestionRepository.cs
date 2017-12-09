@@ -1,24 +1,57 @@
 ﻿using PostawNaMilionAzure.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
 namespace PostawNaMilionAzure.Repository
 {
-    public class QuestionRepository
+    public class QuestionRepository : IRepository<Question>
     {
-        public static List<Question> Get()
+        AzureContext db;
+
+        public QuestionRepository()
         {
-            using (var db = new AzureContext())
-                return db.Question.ToList();
+            db = new AzureContext();
         }
 
-        public static Question GetById(int Id)
+        public void Add(Question entity)
         {
-            using (var db = new AzureContext())
-                return db.Question.Where(x => x.Id == Id).FirstOrDefault();
+            db.Question.Add(entity);
+            Save();
         }
 
+        public void Delete(Question entity)
+        {
+            db.Question.Remove(entity);
+            Save();
+        }
+
+        public Question GetID(int Id)
+        {
+            return db.Question.Where(x => x.Id == Id).FirstOrDefault();
+        }
+
+        public IEnumerable<Question> GetOverview(Func<Question, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return db.Question;
+            }
+
+            return db.Question.Where(predicate);
+        }
+
+        public void Update(Question entity)
+        {
+            db.Entry(entity).State = EntityState.Modified;
+            Save();
+        }
+
+        private void Save()
+        {
+            db.SaveChanges();
+        }
     }
 }
