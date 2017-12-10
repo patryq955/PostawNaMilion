@@ -10,5 +10,7 @@ namespace PostawNaMilionAzure.ViewModel
     {
         public CategoryDict CategoryDict { get; set; }
         public IEnumerable<KnowledgeArea> KnowledgeAreaList { get; set; }
+
+        public string NameAction { get; set;}
     }
 }

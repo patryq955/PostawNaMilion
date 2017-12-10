@@ -8,7 +8,7 @@ namespace PostawNaMilionAzure.Repository
 {
     public interface IRepository<T> where T : class
     {
-        T GetID(int Id);
+        T GetID(int id);
         IEnumerable<T> GetOverview(Func<T, bool> predicate = null);
         void Add(T entity);
 

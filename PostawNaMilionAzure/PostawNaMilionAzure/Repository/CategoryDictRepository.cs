@@ -26,9 +26,9 @@ namespace PostawNaMilionAzure.Repository
             Save();
         }
 
-        public CategoryDict GetID(int Id)
+        public CategoryDict GetID(int id)
         {
-            return db.CategoryDict.Where(x => x.Id == Id).FirstOrDefault();
+            return db.CategoryDict.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<CategoryDict> GetOverview(Func<CategoryDict, bool> predicate = null)

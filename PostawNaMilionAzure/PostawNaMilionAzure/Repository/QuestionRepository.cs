@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PostawNaMilionAzure.Repository
 {
-    public class QuestionRepository : IRepository<Question>
+    public class QuestionRepository : IExtendRepository<Question>
     {
         AzureContext db;
 
@@ -28,9 +28,14 @@ namespace PostawNaMilionAzure.Repository
             Save();
         }
 
-        public Question GetID(int Id)
+        public Question GetID(int id)
         {
-            return db.Question.Where(x => x.Id == Id).FirstOrDefault();
+            return db.Question.Where(x => x.Id == id).FirstOrDefault();
+        }
+
+        public Question GetIdAll(int id)
+        {
+            return db.Question.Include(x =>x.Answer).Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Question> GetOverview(Func<Question, bool> predicate = null)
@@ -41,6 +46,16 @@ namespace PostawNaMilionAzure.Repository
             }
 
             return db.Question.Where(predicate);
+        }
+
+        public IEnumerable<Question> GetOverviewAll(Func<Question, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return db.Question.Include(x => x.Answer);
+            }
+
+            return db.Question.Include(x => x.Answer).Where(predicate);
         }
 
         public void Update(Question entity)

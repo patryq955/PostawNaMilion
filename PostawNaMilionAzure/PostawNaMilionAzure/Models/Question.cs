@@ -12,9 +12,25 @@ namespace PostawNaMilionAzure.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Podaj Treść pytania")]
         [StringLength(300)]
+        [Display(Name = "Pytanie")]
         public String Contents { get; set; }
-        public int Level { get; set; }
+
+        [Display(Name = "Poziom trudności")]
+        public Level Level { get; set; }
+
+        [Display(Name = "Kategoria")]
         public int CategoryDictId { get; set; }
+        public bool IsHidden { get; set; }
+
+        public virtual ICollection<Answer> Answer { get; set; }
+    }
+
+    public enum Level : int
+    {
+        easy = 1,
+        harh = 2
     }
 }

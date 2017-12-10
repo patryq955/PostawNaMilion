@@ -27,9 +27,9 @@ namespace PostawNaMilionAzure.Repository
             Save();
         }
 
-        public KnowledgeArea GetID(int Id)
+        public KnowledgeArea GetID(int id)
         {
-            return db.KnowledgeArea.Where(x => x.Id == Id).FirstOrDefault();
+            return db.KnowledgeArea.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<KnowledgeArea> GetOverview(Func<KnowledgeArea, bool> predicate = null)

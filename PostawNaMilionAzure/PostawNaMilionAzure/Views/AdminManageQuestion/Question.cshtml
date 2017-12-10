@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PostawNaMilionAzure.Models.Question>
+
+@{
+    ViewBag.Title = "Question";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container">
+    @if (Model.Count() == 0)
+    {
+        @: Brak pytan w kategorii
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Pytanie
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var question in Model)
+                {
+                <tbody>
+                    <tr>
+                        <td>
+                            @question.Contents
+                        </td>
+                        <td>
+                            <a href="@Url.Action("EditQuestion","AdminManageQuestion", new { id = question.Id })"
+                                class="btn btn-default">Edytuj</a>
+                        </td>
+                    </tr>
+                </tbody>
+
+            }
+        </table>
+
+    }
+
+
+</div>
+

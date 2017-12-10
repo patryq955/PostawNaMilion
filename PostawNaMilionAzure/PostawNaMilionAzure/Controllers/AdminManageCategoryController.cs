@@ -8,15 +8,15 @@ using System.Web.Mvc;
 namespace PostawNaMilionAzure.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class AdminManageController : Controller
+    public class AdminManageCategoryController : BaseController
     {
         private IRepository<CategoryDict> _categoryDictRepository;
         private IRepository<KnowledgeArea> _knowledgeAreaRepository;
 
         private AzureContext _db = new AzureContext(); // do poprawy
 
-        public AdminManageController(IRepository<CategoryDict> categoryDictRepository
-            , IRepository<KnowledgeArea> knowledgeAreaRepository)
+        public AdminManageCategoryController(IRepository<CategoryDict> categoryDictRepository
+            , IRepository<KnowledgeArea> knowledgeAreaRepository, ITarget mapper) : base(mapper)
         {
             _categoryDictRepository = categoryDictRepository;
             _knowledgeAreaRepository = knowledgeAreaRepository;
@@ -40,6 +40,7 @@ namespace PostawNaMilionAzure.Controllers
                     ? "Dodano Kategorie: " + TempData["doneAddCategory"] : "";
 
             AddCategoryViewModel vM = new AddCategoryViewModel();
+            vM.NameAction = "AddCategory";
             vM.KnowledgeAreaList = _knowledgeAreaRepository.GetOverview().ToList();
             return View(vM);
         }
@@ -51,10 +52,7 @@ namespace PostawNaMilionAzure.Controllers
             {
                 return View("AddCategory", vM);
             }
-
-            MapperAdapter<AddCategoryViewModel, CategoryDict> mapper = new MapperAdapter<AddCategoryViewModel, CategoryDict>(vM);
-            var categoryDict = mapper.GetItem();
-            _categoryDictRepository.Add(categoryDict);
+            _categoryDictRepository.Add(_mapper.GetItem<AddCategoryViewModel, CategoryDict>(vM));
 
             TempData["doneAddCategory"] = vM.CategoryDict.Name;
             return RedirectToAction("AddCategory");
@@ -64,7 +62,8 @@ namespace PostawNaMilionAzure.Controllers
         public ActionResult EditCategory(int id)
         {
             var vM = new AddCategoryViewModel();
-            vM.CategoryDict= _categoryDictRepository.GetID(id);
+            vM.NameAction = "EditCategory";
+            vM.CategoryDict = _categoryDictRepository.GetID(id);
             vM.KnowledgeAreaList = _knowledgeAreaRepository.GetOverview().ToList();
             return View(vM);
         }
@@ -72,21 +71,34 @@ namespace PostawNaMilionAzure.Controllers
         [HttpPost]
         public ActionResult EditCategory(AddCategoryViewModel vM)
         {
-
-
-            return View("Category", "AdminManage");
+            if (!ModelState.IsValid)
+            {
+                return View("EditCategory", vM);
+            }
+            //var category = _categoryDictRepository.GetID(vM.CategoryDict.Id);
+            var category =   _mapper.GetItem<AddCategoryViewModel, CategoryDict>(vM);
+            _categoryDictRepository.Update(category);
+            return RedirectToAction("Category", "AdminManageCategory");
         }
 
-        //Get Add question
-        public ActionResult AddQuestion()
+        [HttpPost]
+        public ActionResult HiddenCategory(int id)
         {
-            return View();
+            var category = _categoryDictRepository.GetID(id);
+            category.IsHidden = !category.IsHidden;
+            _categoryDictRepository.Update(category);
+
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+
         }
 
         public ActionResult Category()
         {
             var vM = _categoryDictRepository.GetOverview().ToList();
-            ViewBag.CategoryDictCount = vM.Count();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ListCategory", vM);
+            }
             return View(vM);
         }
 

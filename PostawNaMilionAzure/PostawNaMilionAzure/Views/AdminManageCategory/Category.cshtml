@@ -1,0 +1,42 @@
+﻿@model List<PostawNaMilionAzure.Models.CategoryDict>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>Kategorie</h2>
+    <div id="category-all">
+
+
+        @Html.Partial("_ListCategory")
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script>
+        $(document).delegate('#hidden-show-category', 'click', function (e) {
+
+            e.preventDefault();
+            idProperty = $(this).attr("data-id");
+
+            console.log(idProperty);
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("HiddenCategory", "AdminManageCategory")",
+                ajaxsync: true,
+            data: { id: idProperty },
+            success: function () {
+                $("#category-all").load("/AdminManageCategory/Category");
+            },
+            error: function (data) {
+                alert(data)
+            }
+
+        });
+        return false;
+        });
+    </script>
+
+}

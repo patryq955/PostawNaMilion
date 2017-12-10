@@ -12,9 +12,16 @@ namespace PostawNaMilionAzure.Models
     {
         [Key]
         public int Id { get; set; }
+
         public int QuestionId { get; set; }
+
         [StringLength(300)]
+        [Display(Name = "Odpowiedź")]
+        [Required(ErrorMessage = "Podaj treść Pytania")]
         public String Contents { get; set; }
+
+        [Display (Name = "Prawidłowa odpowiedź")]
         public bool IsCorrect { get; set; }
+
     }
 }

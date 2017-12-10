@@ -1,0 +1,49 @@
+﻿@model List<PostawNaMilionAzure.Models.CategoryDict>
+
+<div class="row">
+    @if (Model.Count() == 0)
+    {
+        @: Brak danych
+                            }
+    else
+    {
+        <table class="table table-condensed">
+            <tr>
+                <td>@Html.DisplayNameFor(x => x.FirstOrDefault().Name)</td>
+                <td>@Html.DisplayNameFor(x => x.FirstOrDefault().Description)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            @foreach (var category in Model)
+            {
+
+                <tr>
+                    <td>
+                        @category.Name
+                    </td>
+                    <td>
+                        @category.Description
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Question", "AdminManageQuestion", 
+                                new {categoryID = category.Id})" class="btn btn-default">Pytania</a>
+                        <a href="@Url.Action("EditCategory","AdminManageCategory",
+                                new { id = category.Id })" class="btn btn-default">Edytuj</a>
+                        <a id="hidden-show-category" data-id="@category.Id" href="#" class="btn btn-default">
+                            @if (category.IsHidden)
+                            {
+                                @:Przywróć
+                            }
+                            else
+                            {
+                                @:Ukryj
+                            }
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+
+
+</div>

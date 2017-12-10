@@ -1,17 +1,21 @@
 ﻿@model PostawNaMilionAzure.ViewModel.AddCategoryViewModel
 
-@using (Html.BeginForm("AddCategory", "AdminManage"))
+@using (Html.BeginForm(Model.NameAction, "AdminManageCategory"))
 {
+
     @Html.AntiForgeryToken()
     <div class="row">
         @Html.ValidationSummary()
+    </div>  
 
-
+    if (Model.CategoryDict != null)
+    {
+        @Html.HiddenFor(model => model.CategoryDict.Id)
+    }
+    <div class="form-group">
+        @Html.LabelFor(x => x.CategoryDict.Name)
+        @Html.TextBoxFor(x => x.CategoryDict.Name, new { @class = "form-control" })
     </div>
-        <div class="form-group">
-            @Html.LabelFor(x => x.CategoryDict.Name)
-            @Html.TextBoxFor(x => x.CategoryDict.Name, new { @class = "form-control" })
-        </div>
         <div class="form-group">
             @Html.LabelFor(x => x.CategoryDict.Description)
             @Html.TextBoxFor(x => x.CategoryDict.Description, new { @class = "form-control" })

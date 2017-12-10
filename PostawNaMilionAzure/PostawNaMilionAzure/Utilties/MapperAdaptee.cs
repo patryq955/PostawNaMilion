@@ -14,11 +14,13 @@ namespace PostawNaMilionAzure.Utilties
     {
         private T _source;
         MapperConfiguration _config;
+        IMapper _mapper;
 
         public MapperAdaptee(T source)
         {
             _source = source;
             _config = new MapperConfiguration(cfg => cfg.CreateMap<T, TDo>());
+            _mapper = _config.CreateMapper();
         }
 
         public TDo GetItem()
@@ -27,15 +29,25 @@ namespace PostawNaMilionAzure.Utilties
             {
                 return GetCategoryDict();
             }
+            if (typeof(T) == typeof(QuestionViewModel) && typeof(TDo) == typeof(Question))
+            {
+                return GetQuestion();
+            }
             return default(TDo);
         }
 
         private TDo GetCategoryDict()
         {
-            var mapper = _config.CreateMapper();
-
             var vM = _source as AddCategoryViewModel;
-            var tDo = mapper.Map<TDo>(vM.CategoryDict);
+            var tDo = _mapper.Map<TDo>(vM.CategoryDict);
+
+            return (TDo)tDo;
+        }
+
+        private TDo GetQuestion()
+        {
+            var vM = _source as QuestionViewModel;
+            var tDo = _mapper.Map<TDo>(vM.Question);
 
             return (TDo)tDo;
         }
@@ -43,7 +55,7 @@ namespace PostawNaMilionAzure.Utilties
 
 
 
-  
+
 
 
 

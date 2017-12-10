@@ -54,12 +54,6 @@ table {
 .btn-add-category {
   margin: 0px auto; }
 
-.done-add-category {
-  padding: 10px;
-  font-size: 15px;
-  font-weight: bold;
-  color: red; }
-
 body {
   padding-top: 50px;
   padding-bottom: 20px; }
@@ -102,6 +96,12 @@ textarea.input-validation-error {
 
 .validation-summary-valid {
   display: none; }
+
+.done-add {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: red; }
 
 .owl-carousel .item img {
   max-height: 500px; }

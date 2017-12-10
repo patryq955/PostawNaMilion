@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PostawNaMilionAzure.Utilties
 {
-    public interface ITarget<TModel>
+    public interface ITarget
     {
-        TModel GetItem();
+        TDo GetItem<T, TDo>(T _vM)
+                    where TDo : class, new()
+                    where T : class;
     }
 }

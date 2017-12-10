@@ -26,9 +26,9 @@ namespace PostawNaMilionAzure.Repository
             Save();
         }
 
-        public Answer GetID(int Id)
+        public Answer GetID(int id)
         {
-            return db.Answer.Where(x => x.Id == Id).FirstOrDefault();
+            return db.Answer.Where(x => x.Id == id).FirstOrDefault();
         }
 
         public IEnumerable<Answer> GetOverview(Func<Answer, bool> predicate = null)

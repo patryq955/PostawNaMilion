@@ -269,8 +269,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminManageQuestionController.cs" />
     <Compile Include="Controllers\AdminManageUserController.cs" />
-    <Compile Include="Controllers\AdminManageController.cs" />
+    <Compile Include="Controllers\AdminManageCategoryController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -291,6 +293,14 @@
     <Compile Include="Migrations\201712091758016_EditCategoryDict.cs" />
     <Compile Include="Migrations\201712091758016_EditCategoryDict.Designer.cs">
       <DependentUpon>201712091758016_EditCategoryDict.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101555188_ChangeQuestion.cs" />
+    <Compile Include="Migrations\201712101555188_ChangeQuestion.Designer.cs">
+      <DependentUpon>201712101555188_ChangeQuestion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712101600168_ChangeAnswer.cs" />
+    <Compile Include="Migrations\201712101600168_ChangeAnswer.Designer.cs">
+      <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryDict.cs" />
@@ -316,7 +326,7 @@
     <Compile Include="Repository\KnowledgeAreaRepository.cs" />
     <Compile Include="Repository\QuestionRepository.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\QuestionAnserView.cs" />
+    <Compile Include="ViewModel\QuestionViewModel.cs" />
     <Compile Include="ViewModel\UsersRoleView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -437,8 +447,7 @@
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="Views\AdminManageUser\Edit.cshtml" />
     <Content Include="Views\AdminManageUser\Index.cshtml" />
-    <Content Include="Views\AdminManage\AddCategory.cshtml" />
-    <Content Include="Views\AdminManage\AddQuestion.cshtml" />
+    <Content Include="Views\AdminManageCategory\AddCategory.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\ChangePasswordOtherUser.cshtml" />
@@ -458,17 +467,22 @@
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\AdminManage\_LastFiveRegisterUser.cshtml" />
+    <Content Include="Views\AdminManageCategory\_LastFiveRegisterUser.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
-    <Content Include="Views\AdminManage\Index.cshtml" />
+    <Content Include="Views\AdminManageCategory\Index.cshtml" />
     <Content Include="Views\Game\NewGame.cshtml" />
-    <Content Include="Views\AdminManage\Category.cshtml" />
-    <Content Include="Views\AdminManage\_ListCategory.cshtml" />
-    <Content Include="Views\AdminManage\EditCategory.cshtml" />
-    <Content Include="Views\AdminManage\_AddEditCategory.cshtml" />
+    <Content Include="Views\AdminManageCategory\Category.cshtml" />
+    <Content Include="Views\AdminManageCategory\_ListCategory.cshtml" />
+    <Content Include="Views\AdminManageCategory\EditCategory.cshtml" />
+    <Content Include="Views\AdminManageCategory\_AddEditCategory.cshtml" />
+    <Content Include="Views\AdminManageQuestion\AddQuestion.cshtml" />
+    <Content Include="Views\AdminManageQuestion\Question.cshtml" />
+    <Content Include="Views\AdminManageQuestion\_AddEditQuestion.cshtml" />
+    <Content Include="Views\AdminManageQuestion\EditQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -495,6 +509,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712091758016_EditCategoryDict.resx">
       <DependentUpon>201712091758016_EditCategoryDict.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101555188_ChangeQuestion.resx">
+      <DependentUpon>201712101555188_ChangeQuestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712101600168_ChangeAnswer.resx">
+      <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
