@@ -33,7 +33,6 @@ namespace PostawNaMilionAzure.Models
         public DbSet<UserRate> UserRate { get; set; }
         public DbSet<GameStep> GameStep { get; set; }
         public DbSet<Game> Game { get; set; }
-        //public DbSet<Users> Users { get; set; }
-        //public DbSet<Role> Role { get; set; }
+
     }
 }

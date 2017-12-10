@@ -11,7 +11,8 @@ namespace PostawNaMilionAzure.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
-
+    using Repository;
+    using Models;
 
     public static class NinjectWebCommon
     {
@@ -64,6 +65,8 @@ namespace PostawNaMilionAzure.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             //kernel.Bind<IMailService>().To<BackgroundPostalMailService>();
+            kernel.Bind<IRepository<CategoryDict>>().To<CategoryDictRepository>();
+            kernel.Bind<IRepository<KnowledgeArea>>().To<KnowledgeAreaRepository>();
 
         }
     }

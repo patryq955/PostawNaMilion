@@ -48,6 +48,18 @@ table {
   .nav-admin-manage li:hover {
     background-color: red; }
 
+.add-category {
+  padding: 20px 0; }
+
+.btn-add-category {
+  margin: 0px auto; }
+
+.done-add-category {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: red; }
+
 body {
   padding-top: 50px;
   padding-bottom: 20px; }
@@ -63,6 +75,33 @@ input,
 select,
 textarea {
   max-width: 280px; }
+
+h2 {
+  padding: 10px;
+  font-size: 25px;
+  font-weight: bold; }
+
+/*  Validation */
+.field-validation-error {
+  color: #e80c4d;
+  font-weight: bold; }
+
+.field-validation-valid {
+  display: none; }
+
+input.input-validation-error {
+  border: 1px solid #e80c4d; }
+
+textarea.input-validation-error {
+  border-color: red; }
+
+.validation-summary-errors {
+  color: #e80c4d;
+  font-weight: bold;
+  font-size: 1.1em; }
+
+.validation-summary-valid {
+  display: none; }
 
 .owl-carousel .item img {
   max-height: 500px; }

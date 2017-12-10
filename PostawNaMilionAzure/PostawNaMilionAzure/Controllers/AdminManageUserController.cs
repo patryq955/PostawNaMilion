@@ -18,7 +18,7 @@ namespace PostawNaMilionAzure.Controllers
         public ActionResult Index()
         {
         
-            return View(db.Users.Where(x => x.Id != "2f94a417-4a2d-4161-aa5a-fa20557490ff").ToList());
+            return View(db.Users.Where(x => x.Id != "a0c6bb10-d343-4280-9929-b91076670465").ToList());
         }
 
         // GET: AdminManagUser/Details/5

@@ -1,8 +1,14 @@
-﻿
+﻿@model PostawNaMilionAzure.ViewModel.AddCategoryViewModel
 @{
-    ViewBag.Title = "AddCategory";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
-<h2>AddCategory</h2>
-
+<div class="container ">
+    <div class="row">
+        <h2>Kategorie</h2>
+    </div>
+    <div class="row done-add-category">
+        @ViewBag.DoneAddCategory
+    </div>
+   
+    @Html.Partial("_AddEditCategory")
+</div>
