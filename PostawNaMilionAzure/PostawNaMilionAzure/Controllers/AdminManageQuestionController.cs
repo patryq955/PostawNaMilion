@@ -44,16 +44,7 @@ namespace PostawNaMilionAzure.Controllers
             {
                 return View("AddQuestion", vM);
             }
-
-            vM.AnswerList[vM.isCorrectNumber].IsCorrect = true;
-
-            var question = _mapper.GetItem<QuestionViewModel, Question>(vM);
-            question.Answer = new List<Answer>();
-            foreach (var answer in vM.AnswerList)
-            {
-                question.Answer.Add(answer);
-            }
-            _questionRepository.Add(question);
+            SaveAddEdditQuestion(vM, false);
 
             TempData["isAdd"] = "add";
             return RedirectToAction("AddQuestion");
@@ -65,9 +56,9 @@ namespace PostawNaMilionAzure.Controllers
             QuestionViewModel vM = new QuestionViewModel(_categoryDictRepository);
             vM.ActionName = "EditQuestion";
             vM.Question = _questionRepository.GetIdAll(id);
-            for(int i=0; i<vM.Question.Answer.Count(); i++)
+            for (int i = 0; i < vM.Question.Answer.Count(); i++)
             {
-                vM.AnswerList[i] = _answerRepository.GetID(id);
+                vM.AnswerList[i] = _answerRepository.GetID(vM.Question.Answer.ElementAt(i).Id);
             }
             return View(vM);
         }
@@ -75,28 +66,62 @@ namespace PostawNaMilionAzure.Controllers
         [HttpPost]
         public ActionResult EditQuestion(QuestionViewModel vM)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View("EditQuestion", vM);
             }
-
-            //vM.AnswerList = vM.AnswerList.Where(x => x.IsCorrect == true).Select(x => x.IsCorrect = false).ToArray();
             vM.AnswerList = vM.AnswerList.Select(x => { x.IsCorrect = false; return x; }).ToArray();
-            vM.AnswerList[vM.isCorrectNumber].IsCorrect = true;
 
+            SaveAddEdditQuestion(vM, true);
 
-            return View();
+            return RedirectToAction("Category", "AdminManageCategory");
         }
 
-
-
-        public ActionResult Question (int categoryID)
+        public ActionResult Question(int categoryID)
         {
             Func<Question, bool> predicate = x => x.CategoryDictId == categoryID;
+
             var vM = _questionRepository.GetOverview(predicate).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_ListQUestion", vM);
+            }
             return View(vM);
+
         }
 
+        public ActionResult HiddenQuestion(int id)
+        {
+            var question = _questionRepository.GetID(id);
+            question.IsHidden = !question.IsHidden;
+            _questionRepository.Update(question);
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
+        #region helpers
+
+        public void SaveAddEdditQuestion(QuestionViewModel vM, bool isEdit)
+        {
+            vM.AnswerList[vM.isCorrectNumber].IsCorrect = true;
+            var question = _mapper.GetItem<QuestionViewModel, Question>(vM);
+            question.Answer = new List<Answer>();
+            foreach (var answer in vM.AnswerList)
+            {
+                question.Answer.Add(answer);
+            }
+
+            if (isEdit)
+            {
+                _questionRepository.Update(question);
+                question.Answer.ToList().ForEach(x => _answerRepository.Update(x));
+                return;
+            }
+
+            _questionRepository.Add(question);
+
+        }
+
+        #endregion
 
     }
 }

@@ -6,42 +6,39 @@
 }
 
 <div class="container">
-    @if (Model.Count() == 0)
-    {
-        @: Brak pytan w kategorii
-    }
-    else
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Pytanie
-                    </th>
-                    <th>
 
-                    </th>
-                </tr>
-            </thead>
-            @foreach (var question in Model)
-                {
-                <tbody>
-                    <tr>
-                        <td>
-                            @question.Contents
-                        </td>
-                        <td>
-                            <a href="@Url.Action("EditQuestion","AdminManageQuestion", new { id = question.Id })"
-                                class="btn btn-default">Edytuj</a>
-                        </td>
-                    </tr>
-                </tbody>
-
-            }
-        </table>
-
-    }
-
-
+    <div id="question-all">
+        @Html.Partial("_ListQUestion")
+    </div>
+   
 </div>
+
+
+@section scripts{
+
+    <script>
+        $(document).delegate('#hidden-show-question', 'click', function (e) {
+
+            e.preventDefault();
+            idQuestion = $(this).attr("data-id");
+            idCategory = $(this).attr("data-id-category");
+            console.log(idCategory);
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("HiddenQuestion", "AdminManageQuestion")",
+                ajaxsync: true,
+            data: { id: idQuestion },
+            success: function () {
+                $("#question-all").load('@Url.Action("Question", "AdminManageQuestion")?categoryID=' + idCategory);
+            },
+            error: function (data) {
+                alert(data)
+            }
+
+        });
+        return false;
+        });
+    </script>
+
+}
 

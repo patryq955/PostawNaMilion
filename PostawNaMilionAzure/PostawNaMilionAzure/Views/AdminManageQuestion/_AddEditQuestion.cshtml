@@ -1,7 +1,6 @@
 ﻿@model PostawNaMilionAzure.ViewModel.QuestionViewModel
 
 
-
 @using (Html.BeginForm(Model.ActionName, "AdminManageQuestion"))
 {
     if (Model.Question != null)
@@ -33,14 +32,24 @@
 
     for (int i = 0; i < 4; i++)
     {
+        if (Model.Question != null)
+        {
+            @Html.HiddenFor(model => model.AnswerList[i].Id)
+            @Html.HiddenFor(model => model.AnswerList[i].QuestionId)
+        }
         <div class="row">
-            <div class="col-lg-3 form-group ">
+            <div class="col-lg-3 form-group label">
                 @Html.LabelFor(x => x.AnswerList[i].Contents)
                 @Html.TextBoxFor(x => x.AnswerList[i].Contents)
             </div>
-            <div class="col-lg-3 form-group">
-                @Html.RadioButtonFor(x => x.isCorrectNumber, i, new { @class = "radio form-control" })
+            <div class="col-lg-3 form-group radio-button">
+                @Html.RadioButtonFor(x => x.isCorrectNumber, i,
+                  Model.AnswerList[i].IsCorrect ? new { @checked = "true" } : null )
+
+
             </div>
+
+
         </div>
     }
 

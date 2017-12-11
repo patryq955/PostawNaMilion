@@ -54,6 +54,12 @@ table {
 .btn-add-category {
   margin: 0px auto; }
 
+.radio-button input {
+  float: left;
+  clear: left;
+  width: 50px;
+  line-height: 20px; }
+
 body {
   padding-top: 50px;
   padding-bottom: 20px; }

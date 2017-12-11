@@ -19,21 +19,21 @@
         $(document).delegate('#hidden-show-category', 'click', function (e) {
 
             e.preventDefault();
-            idProperty = $(this).attr("data-id");
+            idCategory= $(this).attr("data-id");
 
-            console.log(idProperty);
+            console.log(idCategory);
             $.ajax({
                 type: "post",
                 url: "@Url.Action("HiddenCategory", "AdminManageCategory")",
                 ajaxsync: true,
-            data: { id: idProperty },
+                data: { id: idCategory },
             success: function () {
-                $("#category-all").load("/AdminManageCategory/Category");
+                $("#category-all").load("@Url.Action("Category", "AdminManageCategory")");
             },
             error: function (data) {
-                alert(data)
+                        alert(data)
             }
-
+                   
         });
         return false;
         });

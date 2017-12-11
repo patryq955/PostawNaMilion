@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201712101600168_ChangeAnswer.Designer.cs">
       <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.cs" />
+    <Compile Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.Designer.cs">
+      <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryDict.cs" />
     <Compile Include="Utilties\ITarget.cs" />
@@ -479,6 +483,7 @@
     <Content Include="Views\AdminManageQuestion\Question.cshtml" />
     <Content Include="Views\AdminManageQuestion\_AddEditQuestion.cshtml" />
     <Content Include="Views\AdminManageQuestion\EditQuestion.cshtml" />
+    <Content Include="Views\AdminManageQuestion\_ListQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -515,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712101600168_ChangeAnswer.resx">
       <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.resx">
+      <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
