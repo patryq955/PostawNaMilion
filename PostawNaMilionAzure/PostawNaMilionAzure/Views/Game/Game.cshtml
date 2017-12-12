@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css{
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="~/Content/svgTimer.css" rel="stylesheet" />
+}
+@*
+    http://localhost:25635/Game/Game
+*@
+
+<div class="container">
+    <div class="game-photo row">
+        <div class="col">
+            <div class="row">
+                <div class="col-sm-8 ">
+                    <div class="svg-timer">
+
+                    </div>
+                </div>
+                <div class="col-sm-4 game-sum">
+                    <div>
+                        <span id="game-sum-value"></span> zł
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row game-question">
+        <div class="game-question-text">
+            <h4>Pytanie nr X</h4>
+            sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
+            sad asds sad sad asds sad sad asds sad ad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
+            sad asds sad sad asds sad sad asds sadad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
+            sad asds sad sad asds sad sad asds sadad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
+            sad asds sad sad asds sad sad asds sad
+        </div>
+    </div>
+    <div class="row game-answer">
+        <div class="col-md-6 col-xs-12">
+            <p>s</p>
+            <div id="input_container">
+                <input type="number" class="form-control" id="input-1" value="0" min="0" step="25000" max>
+                <i class="material-icons" id="input_all" data-id="1">done</i>
+                <i class="material-icons" id="input_clear" data-id="1">cancel</i>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+
+            <p>ssadas ss </p>
+            <div id="input_container">
+                <input type="number" class="form-control" id="input-2" step="25000" min="0" value="0">
+                <i class="material-icons" id="input_all" data-id="2">done</i>
+                <i class="material-icons" id="input_clear" data-id="2">cancel</i>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <p>s</p>
+            <div id="input_container">
+                <input type="number" class="form-control" id="input-3" step="25000" min="0" value="0">
+                <i class="material-icons" id="input_all" data-id="3">done</i>
+                <i class="material-icons" id="input_clear" data-id="3">cancel</i>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <p>s</p>
+            <div id="input_container">
+                <input type="number" class="form-control" id="input-4" step="25000" min="0" value="0">
+                <i class="material-icons" id="input_all" data-id="4">done</i>
+                <i class="material-icons" id="input_clear" data-id="4">cancel</i>
+            </div>
+        </div>
+
+
+    </div>
+    @*<div class="row">
+            <ul class="nav navbar-collapse">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+            </ul>
+        </div>*@
+
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/svgTimer.js"></script>
+    <script src="~/Scripts/Game.js"></script>
+
+
+
+}

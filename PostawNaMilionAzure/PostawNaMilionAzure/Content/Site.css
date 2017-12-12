@@ -70,12 +70,6 @@ body {
 .dl-horizontal dt {
   white-space: normal; }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px; }
-
 h2 {
   padding: 10px;
   font-size: 25px;
@@ -185,4 +179,71 @@ textarea.input-validation-error {
   padding: 50px 0; }
   .three-elements > div {
     padding: 0 50px; }
+
+.game-photo {
+  margin: 10px 0;
+  height: 400px;
+  position: relative;
+  z-index: -1;
+  background-position: center;
+  background-size: 80%;
+  background-image: url("../../AppImage/maxresdefault.jpg");
+  /*img {
+        max-height: 400px;
+        z-index: -1;
+        position: absolute;
+    }*/ }
+
+.game-question {
+  background-color: rgba(117, 162, 237, 0.7);
+  border: solid 3px #1851b0;
+  min-height: 100px;
+  max-height: 400px;
+  margin: 0 30px;
+  margin-top: -20px;
+  z-index: 10; }
+  .game-question .game-question-text {
+    padding: 20px; }
+
+.game-answer {
+  margin: 0 40px; }
+  .game-answer > div {
+    padding: 10px 20px;
+    background-color: rgba(70, 128, 225, 0.82); }
+    .game-answer > div p {
+      text-align: center;
+      font-weight: bold;
+      padding: 5px; }
+
+#input_container {
+  position: relative;
+  padding: 0;
+  margin: 0; }
+
+#input {
+  margin: 0;
+  padding-left: 30px; }
+
+#input_all {
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 70px;
+  width: 10px;
+  height: 10px; }
+
+#input_clear {
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 48px;
+  width: 10px;
+  height: 10px; }
+
+.game-sum {
+  padding: 30px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  color: #ffd800; }
 

@@ -347,6 +347,7 @@
     <Content Include="Content\Site.min.css">
       <DependentUpon>Site.css</DependentUpon>
     </Content>
+    <Content Include="Content\svgTimer.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -412,6 +413,7 @@
     <Content Include="Metadata\deploymentTemplates\apiappconfig.azureresource.json" />
     <Content Include="Models\QuestionDatabase" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
+    <Content Include="Scripts\game.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
@@ -428,6 +430,7 @@
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\svgTimer.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\AdminManageUser\Delete.cshtml" />
     <Content Include="Web.config">
@@ -484,6 +487,7 @@
     <Content Include="Views\AdminManageQuestion\_AddEditQuestion.cshtml" />
     <Content Include="Views\AdminManageQuestion\EditQuestion.cshtml" />
     <Content Include="Views\AdminManageQuestion\_ListQuestion.cshtml" />
+    <Content Include="Views\Game\Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

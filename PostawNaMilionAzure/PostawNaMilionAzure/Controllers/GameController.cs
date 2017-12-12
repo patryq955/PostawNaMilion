@@ -8,6 +8,10 @@ namespace PostawNaMilionAzure.Controllers
 {
     public class GameController : Controller
     {
+        public ActionResult Game()
+        {
+            return View();
+        }
         // GET: Game
         public ActionResult NewGame()
         {
