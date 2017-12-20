@@ -1,4 +1,4 @@
-﻿
+﻿@model PostawNaMilionAzure.ViewModel.GameViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -11,91 +11,123 @@
     http://localhost:25635/Game/Game
 *@
 
-<div class="container">
-    <div class="game-photo row">
-        <div class="col">
-            <div class="row">
-                <div class="col-sm-8 ">
-                    <div class="svg-timer">
-
-                    </div>
-                </div>
-                <div class="col-sm-4 game-sum">
-                    <div>
-                        <span id="game-sum-value"></span> zł
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <div class="row game-question">
-        <div class="game-question-text">
-            <h4>Pytanie nr X</h4>
-            sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
-            sad asds sad sad asds sad sad asds sad ad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
-            sad asds sad sad asds sad sad asds sadad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
-            sad asds sad sad asds sad sad asds sadad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad sad asds sad
-            sad asds sad sad asds sad sad asds sad
-        </div>
-    </div>
-    <div class="row game-answer">
-        <div class="col-md-6 col-xs-12">
-            <p>s</p>
-            <div id="input_container">
-                <input type="number" class="form-control" id="input-1" value="0" min="0" step="25000" max>
-                <i class="material-icons" id="input_all" data-id="1">done</i>
-                <i class="material-icons" id="input_clear" data-id="1">cancel</i>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-
-            <p>ssadas ss </p>
-            <div id="input_container">
-                <input type="number" class="form-control" id="input-2" step="25000" min="0" value="0">
-                <i class="material-icons" id="input_all" data-id="2">done</i>
-                <i class="material-icons" id="input_clear" data-id="2">cancel</i>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-            <p>s</p>
-            <div id="input_container">
-                <input type="number" class="form-control" id="input-3" step="25000" min="0" value="0">
-                <i class="material-icons" id="input_all" data-id="3">done</i>
-                <i class="material-icons" id="input_clear" data-id="3">cancel</i>
-            </div>
-        </div>
-        <div class="col-md-6 col-xs-12">
-            <p>s</p>
-            <div id="input_container">
-                <input type="number" class="form-control" id="input-4" step="25000" min="0" value="0">
-                <i class="material-icons" id="input_all" data-id="4">done</i>
-                <i class="material-icons" id="input_clear" data-id="4">cancel</i>
-            </div>
-        </div>
-
-
-    </div>
-    @*<div class="row">
-            <ul class="nav navbar-collapse">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-            </ul>
-        </div>*@
+<div class="container" id="game-partial">
+    @Html.Partial("_Question")
 
 </div>
 
 
+
+
+@*<div id="fancybox" style="width:400px;height:200px">
+        <div class="row">
+            @foreach (var category in Model.CategoryDict)
+                {
+            <div class="col-md-6">
+                <input type="submit" value="@category.Description" id="choice-category" data-id="@category.Id" />
+            </div>
+            }
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <input type="submit" value="Zakończ grę" class="btn btn-danger" />
+
+            </div>
+
+        </div>
+
+    </div>*@
+
+
+
 @section scripts{
     <script src="~/Scripts/svgTimer.js"></script>
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox-buttons.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox-thumbs.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/Game.js"></script>
 
 
 
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            showFancyBox();
+        });
+
+        $(document).delegate('#choice-category', 'click', function (e) {
+            e.preventDefault();
+            idCategory = $(this).attr("data-id");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("GetQuestion", "Game")",
+                ajaxsync: true,
+                data: { categoryID: idCategory },
+            })
+            .done(function (partialVIew) {
+                $("#game-partial").html(partialVIew);
+                parent.jQuery.fancybox.close();
+                loadSumValue();
+            });
+        });
+
+        $(document).delegate('#send-answers', 'click', function (e) {
+
+            e.preventDefault();
+            dict = new Object();
+            dict[parseInt($("#input-1").attr("data-id"))] = $("#input-1").val();
+            dict[parseInt($("#input-2").attr("data-id"))] = $("#input-2").val();
+            dict[parseInt($("#input-3").attr("data-id"))] = $("#input-3").val();
+            dict[parseInt($("#input-4").attr("data-id"))] = $("#input-4").val();
+
+            idQuestion = $("#game-question").attr("data-id");
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("SendAnswer", "Game")",
+                ajaxsync: true,
+                data: { questionID: idQuestion, answers: dict },
+            })
+           .done(function (partialVIew) {
+               if (partialVIew == 0) {
+                   $.ajax({
+                       type: "post",
+                       url: "@Url.Action("GetCategory", "Game")",
+                       ajaxsync: true,
+                   })
+               .done(function (partialVIew) {
+                   $("#game-partial").html(partialVIew);
+
+
+               });
+                   showFancyBox();
+               }
+               else {
+                   location.href = '@Url.Action("CheckResult","Game")?result=' + patrialVIew;
+               }
+
+           });
+        });
+
+        function showFancyBox() {
+
+            $("#fancybox").fancybox({
+                closeBtn: false, // hide close button
+                closeClick: false, // prevents closing when clicking INSIDE fancybox
+
+                helpers: {
+                    // prevents closing when clicking OUTSIDE fancybox
+                    overlay: { closeClick: false }
+                },
+                keys: {
+                    // prevents closing when press ESC button
+                    close: null
+                }
+            }).trigger('click');
+
+        }
+
+    </script>
 }

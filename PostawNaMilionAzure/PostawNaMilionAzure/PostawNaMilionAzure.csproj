@@ -277,6 +277,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
+    <Compile Include="Exception\GameException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -306,8 +307,22 @@
     <Compile Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.Designer.cs">
       <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712202026441_EditEndGame.cs" />
+    <Compile Include="Migrations\201712202026441_EditEndGame.Designer.cs">
+      <DependentUpon>201712202026441_EditEndGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712202047519_EditEndGamev2.cs" />
+    <Compile Include="Migrations\201712202047519_EditEndGamev2.Designer.cs">
+      <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryDict.cs" />
+    <Compile Include="Models\TypeResultGame.cs" />
+    <Compile Include="Repository\GameRepository.cs" />
+    <Compile Include="Utilties\GameCommon.cs" />
+    <Compile Include="Utilties\GameManager.cs" />
+    <Compile Include="Utilties\SessionManager.cs" />
+    <Compile Include="Utilties\ISessionManager.cs" />
     <Compile Include="Utilties\ITarget.cs" />
     <Compile Include="Utilties\MapperAdaptee.cs" />
     <Compile Include="Utilties\MapperAdapter.cs" />
@@ -315,10 +330,10 @@
     <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="Models\Game.cs" />
-    <Compile Include="Models\GameStep.cs" />
     <Compile Include="Models\KnowledgeArea.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
+    <Compile Include="ViewModel\GameViewModel.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\UserRate.cs" />
@@ -340,6 +355,16 @@
     <Content Include="AppImage\MW-DK630_cash_ZG_20150428132718.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\Site.css">
       <DependentUpon>Site.scss</DependentUpon>
@@ -420,6 +445,12 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-media.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -488,6 +519,10 @@
     <Content Include="Views\AdminManageQuestion\EditQuestion.cshtml" />
     <Content Include="Views\AdminManageQuestion\_ListQuestion.cshtml" />
     <Content Include="Views\Game\Game.cshtml" />
+    <Content Include="Views\Game\_Question.cshtml" />
+    <Content Include="Views\Game\LostGame.cshtml" />
+    <Content Include="Views\Game\WinGame.cshtml" />
+    <Content Include="Views\Game\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -527,6 +562,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.resx">
       <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712202026441_EditEndGame.resx">
+      <DependentUpon>201712202026441_EditEndGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712202047519_EditEndGamev2.resx">
+      <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

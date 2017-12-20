@@ -70,6 +70,8 @@ namespace PostawNaMilionAzure.App_Start
             kernel.Bind<IRepository<Answer>>().To<AnswerRepository>();
             kernel.Bind<IExtendRepository<Question>>().To<QuestionRepository>();
             kernel.Bind<ITarget>().To<MapperAdapter>();
+            kernel.Bind<ISessionManager>().To<SessionManager>();
+            kernel.Bind<IRepository<Game>>().To<GameRepository>();
 
         }
     }

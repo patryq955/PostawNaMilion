@@ -33,6 +33,10 @@ namespace PostawNaMilionAzure.Controllers
         {
             ViewBag.InfoAddQuestion = TempData["isAdd"] == null ? "" : "Pytanie zostało dodane";
             QuestionViewModel vM = new QuestionViewModel(_categoryDictRepository);
+            for (int i = 0; i < 4; i++)
+            {
+                vM.AnswerList[i] = new Answer();
+            }
             vM.ActionName = "AddQuestion";
             return View(vM);
         }

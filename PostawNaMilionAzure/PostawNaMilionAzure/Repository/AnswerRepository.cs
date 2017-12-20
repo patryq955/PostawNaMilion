@@ -31,6 +31,12 @@ namespace PostawNaMilionAzure.Repository
             return db.Answer.Where(x => x.Id == id).FirstOrDefault();
         }
 
+        public Answer GetID(Func<Answer, bool> predicate)
+        {
+            return db.Answer.Where(predicate).FirstOrDefault();
+        }
+
+
         public IEnumerable<Answer> GetOverview(Func<Answer, bool> predicate = null)
         {
             if (predicate == null)
@@ -48,7 +54,7 @@ namespace PostawNaMilionAzure.Repository
         public void Update(Answer entity)
         {
             db.Entry(entity).State = EntityState.Modified;
-            Save();   
+            Save();
         }
     }
 }

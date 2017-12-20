@@ -3,9 +3,67 @@
     ViewBag.Title = "NewGame";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container">
 
-    test
+        <div id="fancybox" style="width:400px;height:200px">
+            <div class="row" >
+                <div class="col-md-6">
+                    <input type="submit" value="Kategoria 1" />
+
+                </div>
+                <div class="col-md-6">
+                    <input type="submit" value="Kategoria 2" />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <input type="submit" value="Zakończ grę" class="btn-danger" id="close-fancybox" />
+
+                </div>
+
+            </div>
+
+        </div>
+
 </div>
 
+@section scripts{
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox-buttons.css" rel="stylesheet" />
+    <link href="~/Content/jquery.fancybox-thumbs.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            showFancyBox();
+        });
+
+
+        function showFancyBox() {
+            $("#fancybox").fancybox({
+                closeBtn: false, // hide close button
+                closeClick: false, // prevents closing when clicking INSIDE fancybox
+
+                helpers: {
+                    // prevents closing when clicking OUTSIDE fancybox
+                    overlay: { closeClick: false }
+                },
+                keys: {
+                    // prevents closing when press ESC button
+                    close: null
+                }
+            }).trigger('click');
+
+        }
+
+        $("#close-fancybox").click(function () {
+            console.log("1");
+            location.href = 'http://google.pl';
+        });
+    </script>
+
+
+}
