@@ -523,6 +523,7 @@
     <Content Include="Views\Game\LostGame.cshtml" />
     <Content Include="Views\Game\WinGame.cshtml" />
     <Content Include="Views\Game\ErrorPage.cshtml" />
+    <Content Include="Views\Game\_ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

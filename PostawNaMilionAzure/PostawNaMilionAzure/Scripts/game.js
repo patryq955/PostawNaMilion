@@ -7,8 +7,9 @@ function loadSumValue() {
     changeInpiutText();
     addAllWithSum();
     clearAllValueWithSum();
+    plusValueWithSum();
+    minusValueWithSum();
     timer();
-    checkTimer();
 }
 
 function addAllWithSum() {
@@ -57,6 +58,38 @@ function clearAllValueWithSum() {
     });
 }
 
+function plusValueWithSum() {
+
+    $(document).delegate('#input_plus', 'click', function (e) {
+        idAnswer = $(this).attr('data-id');
+        e.preventDefault();
+        if (parseInt($('#game-sum-value').text()) <= 0) {
+            return;
+        }
+        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) - 25000);
+        $("#input-" + idAnswer).val(25000 + parseInt(+$("#input-" + idAnswer).val()));
+        console.log('klik plus');
+        return false;
+    });
+}
+
+function minusValueWithSum() {
+
+    $(document).delegate('#input_minus', 'click', function (e) {
+        idAnswer = $(this).attr('data-id');
+        e.preventDefault();
+        if (parseInt($('#game-sum-value').text()) >= 1000000)
+        {
+            return;
+        }
+
+        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) + 25000);
+        $("#input-" + idAnswer).val(parseInt(+$("#input-" + idAnswer).val()) - 25000);
+        console.log('klik plus');
+        return false;
+    });
+}
+
 function timer() {
     $(function () {
         $('.svg-timer').svgTimer();
@@ -64,14 +97,6 @@ function timer() {
     });
 }
 
-function checkTimer() {
-    window.setInterval(function () {
-        var value = $(".svg-hexagonal-counter h2");
-        if (value.text() == 60) {
-            console.log('poszlo');
-        }
 
-    }, 500);
-}
 
 //Fancy Box

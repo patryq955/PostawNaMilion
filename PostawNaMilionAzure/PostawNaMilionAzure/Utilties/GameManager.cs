@@ -46,12 +46,13 @@ namespace PostawNaMilionAzure.Utilties
             return answer != null;
         }
 
-        public TypeResultGame AnswerOnQuestion(int questionID, Dictionary<string, string> answers)
+        public GameViewModel AnswerOnQuestion(int questionID,
+                                               Dictionary<string, string> answers)
         {
-            var sumValue = GetSumValue();
-            var numberQuestion = GetNumberQuestion();
-            var listAnswer = _sessionManager.Get<List<int>>(GameCommon.ListAnswer);
-            if (answers.ToList().Sum(x => float.Parse(x.Value)) > sumValue)
+            var vM = new GameViewModel();
+            vM.SumValue = GetSumValue();
+            vM.NumberQuestion = GetNumberQuestion();
+            if (answers.ToList().Sum(x => float.Parse(x.Value)) > vM.SumValue)
             {
                 throw new GameException("Błedna suma");
             }
@@ -61,44 +62,35 @@ namespace PostawNaMilionAzure.Utilties
                 throw new GameException("Id pytania są niezgodne");
             }
 
-            sumValue = 0;
+            //Sum Value
+            vM.SumValue = 0;
             answers.ToList().ForEach(x =>
             {
-                sumValue += CheckAnswer(questionID, Int32.Parse(x.Key)) ? float.Parse(x.Value) : 0;
+                vM.SumValue += CheckAnswer(questionID, Int32.Parse(x.Key)) ? float.Parse(x.Value) : 0;
             });
 
             //Save session
-            listAnswer.Add(questionID);
-            _sessionManager.Set(GameCommon.SumValue, sumValue);
-            _sessionManager.Set(GameCommon.ListAnswer, listAnswer);
-            _sessionManager.Set(GameCommon.NumberQuestion, ++numberQuestion);
+            SaveSession(vM, questionID);
 
-            if (sumValue == 0)
-            {
-                return TypeResultGame.LostGame;
-            }
-
-
-            return numberQuestion > 8 ? TypeResultGame.WinGame : TypeResultGame.NextQuestion;
+            vM.TypeResultGame = GetTypResultGame(vM);
+            return vM;
         }
 
         public GameViewModel GetResultAnswer(int questionID, Dictionary<string, string> answers)
         {
-            var vM = new GameViewModel();
-
+            GameViewModel vM;
             try
             {
-                vM.TypeResultGame = AnswerOnQuestion(questionID, answers);
+                vM = AnswerOnQuestion(questionID, answers);
                 vM.NumberQuestion = GetNumberQuestion();
                 vM.SumValue = GetSumValue();
             }
             catch (GameException e)
             {
+                vM = new GameViewModel();
                 vM.TypeResultGame = TypeResultGame.LostGame;
                 _sessionManager.Set(GameCommon.ErrorMessage, e.Message);
             }
-
-
             return vM;
         }
 
@@ -108,6 +100,7 @@ namespace PostawNaMilionAzure.Utilties
             {
                 vM = new GameViewModel();
             }
+
             vM.CategoryDict = RandCategory();
             vM.NumberQuestion = GetNumberQuestion();
             vM.SumValue = GetSumValue();
@@ -136,17 +129,15 @@ namespace PostawNaMilionAzure.Utilties
 
         private List<CategoryDict> RandCategory()
         {
-            int randomIndex = 0;
-            var confirmCategoryID = GetQuestionID();
-            Func<CategoryDict, bool> predicate = x => confirmCategoryID.Contains(x.Id) && !x.IsHidden;
-
-            var categories = _categoryDictRepository.GetOverview(predicate).ToList();
             List<CategoryDict> twoCategory = new List<CategoryDict>();
+            int randomIndex = 0;
+            var categories = CategoryDictToRandom();
 
             if (categories.Count < 2)
             {
                 throw new GameException("Za mało kategorii w systemie");
             }
+
             for (int i = 0; i < 2; i++)
             {
                 randomIndex = _random.Next(0, categories.Count);
@@ -159,13 +150,16 @@ namespace PostawNaMilionAzure.Utilties
 
         private Question RandQuestion(int categoryID)
         {
-            //pamietac o sprawdzaniu czy istnieje kategoria z takim ID
-            int randomIndex = 0;
-            int lvlQuestion = GetLvlQuestion();
-            var questionWithGame = GetQuestionWithGame();
-            Func<Question, bool> predicate = x => x.CategoryDictId == categoryID && (int)x.Level == lvlQuestion;
-            var questions = _questionRepository.GetOverviewAll(predicate).ToList();
             Question questionReturn = new Question();
+            int randomIndex = 0;
+            var questionWithGame = GetQuestionWithGame();
+
+            var questions = QuestionToRandom(categoryID);
+
+            if (questions == null || questions.Count < 1)
+            {
+                throw new GameException("Nie ma takiej Kategorii");
+            }
 
             while (true)
             {
@@ -178,6 +172,7 @@ namespace PostawNaMilionAzure.Utilties
                 }
             }
 
+            questionReturn.Answer = GetQuantityAnswer(questionReturn.Answer);
             _sessionManager.Set(GameCommon.ControlQuestionID, questionReturn.Id);
             return questionReturn;
 
@@ -223,6 +218,57 @@ namespace PostawNaMilionAzure.Utilties
         {
             return _sessionManager.Get<List<int>>(GameCommon.ListAnswer);
         }
+
+        private ICollection<Answer> GetQuantityAnswer(ICollection<Answer> answers)
+        {
+            return answers.OrderByDescending(x => x.IsCorrect).Take(TakeAnswer()).OrderBy(x => _random.Next()).ToList() as ICollection<Answer>;
+        }
+
+        private int TakeAnswer()
+        {
+            var questionNumber = _sessionManager.Get<int>(GameCommon.NumberQuestion);
+
+            if (questionNumber <= 4)
+            {
+                return 4;
+            }
+            return questionNumber < 8 ? 3 : 2;
+        }
+
+        private List<Question> QuestionToRandom(int categoryID)
+        {
+            int lvlQuestion = GetLvlQuestion();
+
+            Func<Question, bool> predicate = x => x.CategoryDictId == categoryID && (int)x.Level == lvlQuestion;
+            return _questionRepository.GetOverviewAll(predicate).ToList();
+        }
+
+        private List<CategoryDict> CategoryDictToRandom()
+        {
+            var confirmCategoryID = GetQuestionID();
+            Func<CategoryDict, bool> predicate = x => confirmCategoryID.Contains(x.Id) && !x.IsHidden;
+            return _categoryDictRepository.GetOverview(predicate).ToList();
+
+        }
+
+        private TypeResultGame GetTypResultGame(GameViewModel vM)
+        {
+            if (vM.SumValue == 0)
+            {
+                return TypeResultGame.LostGame;
+            }
+            return vM.NumberQuestion> 8 ? TypeResultGame.WinGame : TypeResultGame.NextQuestion;
+        }
+
+        private void SaveSession(GameViewModel vM,int questionID)
+        {
+            var listAnswer = _sessionManager.Get<List<int>>(GameCommon.ListAnswer);
+            listAnswer.Add(questionID);
+            _sessionManager.Set(GameCommon.SumValue, vM.SumValue);
+            _sessionManager.Set(GameCommon.ListAnswer, listAnswer);
+            _sessionManager.Set(GameCommon.NumberQuestion, ++vM.NumberQuestion);
+        }
+
         #endregion
     }
 }

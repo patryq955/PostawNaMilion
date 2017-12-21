@@ -228,7 +228,7 @@ textarea.input-validation-error {
   cursor: pointer;
   position: absolute;
   bottom: 20px;
-  right: 70px;
+  right: 78px;
   width: 10px;
   height: 10px; }
 
@@ -236,7 +236,23 @@ textarea.input-validation-error {
   cursor: pointer;
   position: absolute;
   bottom: 20px;
-  right: 48px;
+  right: 56px;
+  width: 10px;
+  height: 10px; }
+
+#input_plus {
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 36px;
+  width: 10px;
+  height: 10px; }
+
+#input_minus {
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
   width: 10px;
   height: 10px; }
 
@@ -246,4 +262,11 @@ textarea.input-validation-error {
   font-size: 50px;
   font-weight: bold;
   color: #ffd800; }
+
+.quantity-answer {
+  cursor: default; }
+  .quantity-answer .quantity-answer::-webkit-inner-spin-button,
+  .quantity-answer .quantity-answer::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
 
