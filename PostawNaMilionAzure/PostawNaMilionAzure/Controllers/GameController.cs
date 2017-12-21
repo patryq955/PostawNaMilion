@@ -32,6 +32,10 @@ namespace PostawNaMilionAzure.Controllers
             _gameRepository = gameRepository;
             _gameManager = new GameManager(_sessionManager, _categoryDictRepository, _questionRepository, _answerRepository, _gameRepository);
         }
+        public ActionResult NewGame()
+        {
+            return View();
+        }
 
         public ActionResult Game()
         {
@@ -43,9 +47,9 @@ namespace PostawNaMilionAzure.Controllers
 
         public ActionResult LostGame()
         {
-            if(_sessionManager.Get<string>(GameCommon.ErrorMessage) != null)
+            if (_sessionManager.Get<string>(GameCommon.ErrorMessage) != null)
             {
-                return PartialView("ErrorPage",  _sessionManager.Get<string>(GameCommon.ErrorMessage));
+                return PartialView("ErrorPage", _sessionManager.Get<string>(GameCommon.ErrorMessage));
             }
             if (User.Identity.IsAuthenticated)
             {
@@ -54,10 +58,6 @@ namespace PostawNaMilionAzure.Controllers
             return View();
         }
 
-        public ActionResult ErrorPage(string message)
-        {
-            return View(message);
-        }
 
         public ActionResult WinGame()
         {
@@ -71,9 +71,18 @@ namespace PostawNaMilionAzure.Controllers
         [HttpPost]
         public ActionResult GetQuestion(int categoryID)
         {
-            var vM = _gameManager.GetQuestion(categoryID);
-            vM.IsCategory = false;
-            return PartialView("_Question", vM);
+            try
+            {
+                var vM = _gameManager.GetQuestion(categoryID);
+                vM.IsCategory = false;
+                return PartialView("_Question", vM);
+            }
+            catch (GameException e)
+            {
+                return PartialView("_ErrorPage", e.Message);
+
+            }
+
         }
 
         public ActionResult GetCategory()
@@ -84,12 +93,11 @@ namespace PostawNaMilionAzure.Controllers
                 vM.IsCategory = true;
                 return PartialView("_Question", vM);
             }
-            catch(GameException e)
+            catch (GameException e)
             {
-#warning Do poprawy zwraca partial view
-                return RedirectToAction("ErrorPage",new { message = e.Message });
+                return PartialView("_ErrorPage", e.Message);
             }
-        
+
         }
 
         public int SendAnswer(int questionID, Dictionary<string, string> answers)
@@ -98,9 +106,17 @@ namespace PostawNaMilionAzure.Controllers
             return (int)vM.TypeResultGame;
         }
 
-        public ActionResult NewGame()
+        public ActionResult CheckResult(int result)
         {
-            return View();
+            return result == (int)TypeResultGame.LostGame ?
+                RedirectToAction("LostGame") :
+                RedirectToAction("WinGame");
         }
+
+        public ActionResult ErrorPage(string message)
+        {
+            return View(message);
+        }
+
     }
 }

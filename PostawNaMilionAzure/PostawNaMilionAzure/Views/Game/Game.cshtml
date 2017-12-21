@@ -2,7 +2,6 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @section css{
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="~/Content/svgTimer.css" rel="stylesheet" />
@@ -10,13 +9,9 @@
 @*
     http://localhost:25635/Game/Game
 *@
-
 <div class="container" id="game-partial">
     @Html.Partial("_Question")
-
 </div>
-
-
 
 
 @*<div id="fancybox" style="width:400px;height:200px">
@@ -38,8 +33,6 @@
 
     </div>*@
 
-
-
 @section scripts{
     <script src="~/Scripts/svgTimer.js"></script>
     <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
@@ -50,12 +43,11 @@
     <script src="~/Scripts/Game.js"></script>
 
 
-
-
-
     <script type="text/javascript">
         $(document).ready(function () {
             showFancyBox();
+            checkTimer();
+
         });
 
         $(document).delegate('#choice-category', 'click', function (e) {
@@ -77,7 +69,12 @@
         $(document).delegate('#send-answers', 'click', function (e) {
 
             e.preventDefault();
+            sendAnswer();
+        });
+
+        function sendAnswer() {
             dict = new Object();
+
             dict[parseInt($("#input-1").attr("data-id"))] = $("#input-1").val();
             dict[parseInt($("#input-2").attr("data-id"))] = $("#input-2").val();
             dict[parseInt($("#input-3").attr("data-id"))] = $("#input-3").val();
@@ -89,27 +86,26 @@
                 url: "@Url.Action("SendAnswer", "Game")",
                 ajaxsync: true,
                 data: { questionID: idQuestion, answers: dict },
-            })
-           .done(function (partialVIew) {
-               if (partialVIew == 0) {
-                   $.ajax({
-                       type: "post",
-                       url: "@Url.Action("GetCategory", "Game")",
-                       ajaxsync: true,
-                   })
-               .done(function (partialVIew) {
-                   $("#game-partial").html(partialVIew);
+            }).done(function (partialVIew) {
+                    if (partialVIew == 0) {
+                        $.ajax({
+                            type: "post",
+                            url: "@Url.Action("GetCategory", "Game")",
+                            ajaxsync: true,
+                        })
+                        .done(function (partialVIew2) {
+                            $("#game-partial").html(partialVIew2);
 
+    
+                         });
+                 showFancyBox();
+                }
+                    else {
+                    location.href = '@Url.Action("CheckResult","Game")?result=' + partialVIew;
+            }
 
-               });
-                   showFancyBox();
-               }
-               else {
-                   location.href = '@Url.Action("CheckResult","Game")?result=' + patrialVIew;
-               }
-
-           });
         });
+        };
 
         function showFancyBox() {
 
@@ -127,7 +123,17 @@
                 }
             }).trigger('click');
 
-        }
+        };
+
+        function checkTimer() {
+            window.setInterval(function () {
+                var value = $(".svg-hexagonal-counter h2");
+                if (value.text() == 59 ) {
+                    sendAnswer();
+                }
+
+            }, 500);
+        };
 
     </script>
 }
