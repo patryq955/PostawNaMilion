@@ -42,6 +42,10 @@ namespace PostawNaMilionAzure.Controllers
         {
             return View();
         }
+        public ActionResult NewGame()
+        {
+            return View();
+        }
 
         public ActionResult Game()
         {
