@@ -269,6 +269,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminManageController.cs" />
     <Compile Include="Controllers\AdminManageQuestionController.cs" />
     <Compile Include="Controllers\AdminManageUserController.cs" />
     <Compile Include="Controllers\AdminManageCategoryController.cs" />
@@ -315,9 +316,15 @@
     <Compile Include="Migrations\201712202047519_EditEndGamev2.Designer.cs">
       <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712271938234_AddStepTotalValue.cs" />
+    <Compile Include="Migrations\201712271938234_AddStepTotalValue.Designer.cs">
+      <DependentUpon>201712271938234_AddStepTotalValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryDict.cs" />
+    <Compile Include="Models\StepAddSubTotalValue.cs" />
     <Compile Include="Models\TypeResultGame.cs" />
+    <Compile Include="Repository\StepAddSubTotalValueRepository.cs" />
     <Compile Include="Repository\GameRepository.cs" />
     <Compile Include="Utilties\GameCommon.cs" />
     <Compile Include="Utilties\GameManager.cs" />
@@ -524,10 +531,10 @@
     <Content Include="Views\Game\WinGame.cshtml" />
     <Content Include="Views\Game\ErrorPage.cshtml" />
     <Content Include="Views\Game\_ErrorPage.cshtml" />
+    <Content Include="Views\AdminManage\SetStepTotalValue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -569,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712202047519_EditEndGamev2.resx">
       <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712271938234_AddStepTotalValue.resx">
+      <DependentUpon>201712271938234_AddStepTotalValue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

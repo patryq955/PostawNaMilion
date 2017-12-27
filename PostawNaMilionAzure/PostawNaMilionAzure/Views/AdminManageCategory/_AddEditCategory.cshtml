@@ -1,12 +1,11 @@
 ﻿@model PostawNaMilionAzure.ViewModel.AddCategoryViewModel
-
 @using (Html.BeginForm(Model.NameAction, "AdminManageCategory"))
 {
 
     @Html.AntiForgeryToken()
     <div class="row">
         @Html.ValidationSummary()
-    </div>  
+    </div>
 
     if (Model.CategoryDict != null)
     {
@@ -16,10 +15,10 @@
         @Html.LabelFor(x => x.CategoryDict.Name)
         @Html.TextBoxFor(x => x.CategoryDict.Name, new { @class = "form-control" })
     </div>
-        <div class="form-group">
-            @Html.LabelFor(x => x.CategoryDict.Description)
-            @Html.TextBoxFor(x => x.CategoryDict.Description, new { @class = "form-control" })
-        </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.CategoryDict.Description)
+        @Html.TextBoxFor(x => x.CategoryDict.Description, new { @class = "form-control" })
+    </div>
         <div class="form-group">
             @Html.LabelFor(x => x.CategoryDict.KnowledgeAreaId)
             @Html.DropDownListFor(x => x.CategoryDict.KnowledgeAreaId,
@@ -32,5 +31,4 @@
         </div>
 
 }
-
 

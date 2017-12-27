@@ -72,6 +72,7 @@ namespace PostawNaMilionAzure.App_Start
             kernel.Bind<ITarget>().To<MapperAdapter>();
             kernel.Bind<ISessionManager>().To<SessionManager>();
             kernel.Bind<IRepository<Game>>().To<GameRepository>();
+            kernel.Bind<IRepository<StepAddSubTotalValue>>().To<StepAddSubTotalValueRepository>();
 
         }
     }

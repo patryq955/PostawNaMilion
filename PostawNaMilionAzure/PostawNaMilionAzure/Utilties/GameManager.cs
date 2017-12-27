@@ -16,17 +16,20 @@ namespace PostawNaMilionAzure.Utilties
         private IExtendRepository<Question> _questionRepository;
         private IRepository<Answer> _answerRepository;
         private IRepository<Game> _gameRepository;
+        private IRepository<StepAddSubTotalValue> _stepAddSubTotalValueRepository;
 
         private Random _random;
         public GameManager(ISessionManager sessionManager, IRepository<CategoryDict> categoryDictRepository
             , IExtendRepository<Question> quetionRepository, IRepository<Answer> answerRepository
-            , IRepository<Game> gameRepository)
+            , IRepository<Game> gameRepository
+            ,IRepository<StepAddSubTotalValue> stepAddSubTotalValueRepository)
         {
             _sessionManager = sessionManager;
             _categoryDictRepository = categoryDictRepository;
             _questionRepository = quetionRepository;
             _answerRepository = answerRepository;
             _gameRepository = gameRepository;
+            _stepAddSubTotalValueRepository = stepAddSubTotalValueRepository;
             _random = new Random();
         }
 
@@ -49,7 +52,7 @@ namespace PostawNaMilionAzure.Utilties
         public GameViewModel AnswerOnQuestion(int questionID,
                                                Dictionary<string, string> answers)
         {
-            var vM = new GameViewModel();
+            var vM = new GameViewModel(((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
             vM.SumValue = GetSumValue();
             vM.NumberQuestion = GetNumberQuestion();
             if (answers.ToList().Sum(x => float.Parse(x.Value)) > vM.SumValue)
@@ -87,7 +90,7 @@ namespace PostawNaMilionAzure.Utilties
             }
             catch (GameException e)
             {
-                vM = new GameViewModel();
+                vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
                 vM.TypeResultGame = TypeResultGame.LostGame;
                 _sessionManager.Set(GameCommon.ErrorMessage, e.Message);
             }
@@ -98,7 +101,7 @@ namespace PostawNaMilionAzure.Utilties
         {
             if (vM == null)
             {
-                vM = new GameViewModel();
+                vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
             }
 
             vM.CategoryDict = RandCategory();
@@ -109,7 +112,7 @@ namespace PostawNaMilionAzure.Utilties
 
         public GameViewModel GetQuestion(int categoryID)
         {
-            var vM = new GameViewModel();
+            var vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
             vM.Question = RandQuestion(categoryID);
             vM.NumberQuestion = GetNumberQuestion();
             vM.SumValue = GetSumValue();

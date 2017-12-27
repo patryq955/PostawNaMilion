@@ -9,10 +9,10 @@
 @*
     http://localhost:25635/Game/Game
 *@
-<div class="container" id="game-partial">
+
+<div class="container" id="game-partial" data-step-value>
     @Html.Partial("_Question")
 </div>
-
 
 @*<div id="fancybox" style="width:400px;height:200px">
         <div class="row">
@@ -32,7 +32,6 @@
         </div>
 
     </div>*@
-
 @section scripts{
     <script src="~/Scripts/svgTimer.js"></script>
     <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
@@ -42,12 +41,10 @@
     <script src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/Game.js"></script>
 
-
     <script type="text/javascript">
         $(document).ready(function () {
             showFancyBox();
             checkTimer();
-
         });
 
         $(document).delegate('#choice-category', 'click', function (e) {
@@ -87,53 +84,40 @@
                 ajaxsync: true,
                 data: { questionID: idQuestion, answers: dict },
             }).done(function (partialVIew) {
-                    if (partialVIew == 0) {
-                        $.ajax({
-                            type: "post",
-                            url: "@Url.Action("GetCategory", "Game")",
-                            ajaxsync: true,
-                        })
-                        .done(function (partialVIew2) {
-                            $("#game-partial").html(partialVIew2);
+                if (partialVIew == 0) {
+                    $.ajax({
+                        type: "post",
+                        url: "@Url.Action("GetCategory", "Game")",
+                        ajaxsync: true,
+                    })
+                    .done(function (partialVIew2) {
+                        $("#game-partial").html(partialVIew2);
 
-    
-                         });
-                 showFancyBox();
+
+                    });
+                    showFancyBox();
                 }
-                    else {
+                else {
                     location.href = '@Url.Action("CheckResult","Game")?result=' + partialVIew;
-            }
-
-        });
-        };
-
-        function showFancyBox() {
-
-            $("#fancybox").fancybox({
-                closeBtn: false, // hide close button
-                closeClick: false, // prevents closing when clicking INSIDE fancybox
-
-                helpers: {
-                    // prevents closing when clicking OUTSIDE fancybox
-                    overlay: { closeClick: false }
-                },
-                keys: {
-                    // prevents closing when press ESC button
-                    close: null
-                }
-            }).trigger('click');
-
-        };
-
-        function checkTimer() {
-            window.setInterval(function () {
-                var value = $(".svg-hexagonal-counter h2");
-                if (value.text() == 59 ) {
-                    sendAnswer();
                 }
 
-            }, 500);
+            });
         };
+
+
+
+       
+
+        function loadSumValue() {
+            stepValue = @Model.StepTotalValue;
+            $('#game-sum-value').text($('#game-sum-value').attr("data-sum"));
+            changeInpiutText();
+            addAllWithSum();
+            clearAllValueWithSum();
+            plusValueWithSum();
+            minusValueWithSum();
+            timer();
+        }
 
     </script>
 }

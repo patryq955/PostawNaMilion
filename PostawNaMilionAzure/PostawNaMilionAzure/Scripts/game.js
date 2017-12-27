@@ -1,16 +1,32 @@
 ﻿//Variable
 
+function showFancyBox() {
 
-function loadSumValue() {
-    $('#game-sum-value').text($('#game-sum-value').attr("data-sum"));
-    //$('#game-sum-value').append($('#game-sum-value').attr("data-sum"));
-    changeInpiutText();
-    addAllWithSum();
-    clearAllValueWithSum();
-    plusValueWithSum();
-    minusValueWithSum();
-    timer();
-}
+    $("#fancybox").fancybox({
+        closeBtn: false, // hide close button
+        closeClick: false, // prevents closing when clicking INSIDE fancybox
+
+        helpers: {
+            // prevents closing when clicking OUTSIDE fancybox
+            overlay: { closeClick: false }
+        },
+        keys: {
+            // prevents closing when press ESC button
+            close: null
+        }
+    }).trigger('click');
+
+};
+
+function checkTimer() {
+    window.setInterval(function () {
+        var value = $(".svg-hexagonal-counter h2");
+        if (value.text() == 59) {
+            sendAnswer();
+        }
+
+    }, 500);
+};
 
 function addAllWithSum() {
     $(document).delegate('#input_all', 'click', function (e) {
@@ -26,7 +42,7 @@ function addAllWithSum() {
 function changeInpiutText() {
     $(document).delegate('#input_container input', 'focusout', function (e) {
         e.preventDefault();
-        valueToAdd = Math.ceil($(this).val() / 25000) * 25000;
+        valueToAdd = Math.ceil($(this).val() / stepValue) * stepValue;
         if (valueToAdd <= $('#game-sum-value').text()) {
             $('#game-sum-value').text(parseInt($('#game-sum-value').text()) - parseInt(valueToAdd));
             $(this).val(valueToAdd);
@@ -66,9 +82,8 @@ function plusValueWithSum() {
         if (parseInt($('#game-sum-value').text()) <= 0) {
             return;
         }
-        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) - 25000);
-        $("#input-" + idAnswer).val(25000 + parseInt(+$("#input-" + idAnswer).val()));
-        console.log('klik plus');
+        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) - stepValue);
+        $("#input-" + idAnswer).val(stepValue + parseInt(+$("#input-" + idAnswer).val()));
         return false;
     });
 }
@@ -78,14 +93,14 @@ function minusValueWithSum() {
     $(document).delegate('#input_minus', 'click', function (e) {
         idAnswer = $(this).attr('data-id');
         e.preventDefault();
-        if (parseInt($('#game-sum-value').text()) >= 1000000)
+        if (parseInt($('#game-sum-value').text()) >= 1000000 || $("#input-" + idAnswer).val() <= 0)
         {
             return;
         }
+   
 
-        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) + 25000);
-        $("#input-" + idAnswer).val(parseInt(+$("#input-" + idAnswer).val()) - 25000);
-        console.log('klik plus');
+        $('#game-sum-value').text(parseInt($('#game-sum-value').text()) + stepValue);
+        $("#input-" + idAnswer).val(parseInt(+$("#input-" + idAnswer).val()) - stepValue);
         return false;
     });
 }

@@ -23,14 +23,20 @@ namespace PostawNaMilionAzure.Controllers
 
         public GameController(IExtendRepository<Question> questionRepository, IRepository<Answer> answerRepository,
          IRepository<CategoryDict> categoryDictRepository, ISessionManager sessionManager,
-         IRepository<Game> gameRepository)
+         IRepository<Game> gameRepository,
+         IRepository<StepAddSubTotalValue> stepAddSubTotalValueRepository)
         {
             _questionRepository = questionRepository;
             _answerRepository = answerRepository;
             _categoryDictRepository = categoryDictRepository;
             _sessionManager = sessionManager;
             _gameRepository = gameRepository;
-            _gameManager = new GameManager(_sessionManager, _categoryDictRepository, _questionRepository, _answerRepository, _gameRepository);
+            _gameManager = new GameManager(_sessionManager,
+                                            _categoryDictRepository,
+                                            _questionRepository, 
+                                            _answerRepository, 
+                                            _gameRepository,
+                                            stepAddSubTotalValueRepository);
         }
         public ActionResult NewGame()
         {
