@@ -1,0 +1,177 @@
+﻿<error errorId="5ce796c8-5fec-4ad7-8dc3-ea2ad0eacfd3" application="/LM/W3SVC/2/ROOT" host="PATRYK-KOMP" type="System.IO.IOException" message="Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces." source="mscorlib" detail="System.Web.HttpUnhandledException (0x80004005): Zgłoszono wyjątek typu 'System.Web.HttpUnhandledException'. ---&gt; System.IO.IOException: Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces.&#xD;&#xA;   w System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)&#xD;&#xA;   w System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)&#xD;&#xA;   w System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize)&#xD;&#xA;   w System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy)&#xD;&#xA;   w System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn)&#xD;&#xA;   w System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver)&#xD;&#xA;   w System.Threading.CompressedStack.runTryCode(Object userData)&#xD;&#xA;   w System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData)&#xD;&#xA;   w System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state)&#xD;&#xA;   w System.Xml.XmlTextReaderImpl.OpenUrl()&#xD;&#xA;   w System.Xml.XmlTextReaderImpl.Read()&#xD;&#xA;   w System.Xml.XmlTextReader.Read()&#xD;&#xA;   w System.Xml.XmlReader.MoveToContent()&#xD;&#xA;   w System.Xml.XmlReader.IsStartElement(String name)&#xD;&#xA;   w Elmah.XmlFileErrorLog.GetErrors(Int32 pageIndex, Int32 pageSize, IList errorEntryList)&#xD;&#xA;   w Elmah.ErrorLogPage.OnLoad(EventArgs e)&#xD;&#xA;   w System.Web.UI.Control.LoadRecursive()&#xD;&#xA;   w System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   w System.Web.UI.Page.HandleError(Exception e)&#xD;&#xA;   w System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   w System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)&#xD;&#xA;   w System.Web.UI.Page.ProcessRequest()&#xD;&#xA;   w System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)&#xD;&#xA;   w System.Web.UI.Page.ProcessRequest(HttpContext context)&#xD;&#xA;   w Elmah.Mvc.ElmahResult.ExecuteResult(ControllerContext context)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;&gt;c__DisplayClass2b.&lt;BeginInvokeAction&gt;b__1c()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass21.&lt;BeginInvokeAction&gt;b__1e(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;BeginExecuteCore&gt;b__1d(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.&lt;BeginExecute&gt;b__15(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.&lt;BeginProcessRequest&gt;b__5(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   w System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   w System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   w System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   w System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="admin@gmail.com" time="2018-01-02T15:42:53.1457036Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces.&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Błąd serwera w aplikacji '/'.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces.&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Opis: &lt;/b&gt;Podczas wykonywania bieżącego żądania sieci Web wystąpił nieobsługiwany wyjątek. Aby uzyskać dodatkowe informacje o błędzie i miejscu jego występowania w kodzie, przejrzyj ślad stosu.&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Szczegóły wyjątku: &lt;/b&gt;System.IO.IOException: Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces.&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Błąd źródła:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&#xD;&#xA;&#xD;&#xA;Podczas wykonywania bieżącego żądania sieci Web został wygenerowany nieobsługiwany wyjątek. Informacje dotyczące pochodzenia i lokalizacji wyjątku można zidentyfikować przy użyciu poniższego śladu stosu wyjątku.&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Ślad stosu:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;[IOException: Proces nie może uzyskać dostępu do pliku „C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\app_data\elmah\error-2018-01-02154253Z-50c21b69-f2df-44bf-8285-e77b75e8b441.xml”, ponieważ jest on używany przez inny proces.]&#xD;&#xA;   System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath) +216&#xD;&#xA;   System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost) +736&#xD;&#xA;   System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize) +63&#xD;&#xA;   System.Xml.XmlDownloadManager.GetStream(Uri uri, ICredentials credentials, IWebProxy proxy, RequestCachePolicy cachePolicy) +77&#xD;&#xA;   System.Xml.XmlUrlResolver.GetEntity(Uri absoluteUri, String role, Type ofObjectToReturn) +69&#xD;&#xA;   System.Xml.XmlTextReaderImpl.OpenUrlDelegate(Object xmlResolver) +54&#xD;&#xA;   System.Threading.CompressedStack.runTryCode(Object userData) +70&#xD;&#xA;   System.Runtime.CompilerServices.RuntimeHelpers.ExecuteCodeWithGuaranteedCleanup(TryCode code, CleanupCode backoutCode, Object userData) +0&#xD;&#xA;   System.Threading.CompressedStack.Run(CompressedStack compressedStack, ContextCallback callback, Object state) +92&#xD;&#xA;   System.Xml.XmlTextReaderImpl.OpenUrl() +132&#xD;&#xA;   System.Xml.XmlTextReaderImpl.Read() +208&#xD;&#xA;   System.Xml.XmlTextReader.Read() +15&#xD;&#xA;   System.Xml.XmlReader.MoveToContent() +61&#xD;&#xA;   System.Xml.XmlReader.IsStartElement(String name) +18&#xD;&#xA;   Elmah.XmlFileErrorLog.GetErrors(Int32 pageIndex, Int32 pageSize, IList errorEntryList) +378&#xD;&#xA;   Elmah.ErrorLogPage.OnLoad(EventArgs e) +336&#xD;&#xA;   System.Web.UI.Control.LoadRecursive() +59&#xD;&#xA;   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +780&#xD;&#xA;&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:keep-alive&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:ai_user=dirbR|2017-11-29T18:31:59.709Z; ASP.NET_SessionId=lvr03xlzgvgefo3dwknd0kuj; __RequestVerificationToken=eQvKUL2BKY93VWVWCHp-wyPKQ-hUkfakeA_9G8sjedobsDmHPJU3eCh4ADzOfOJQs8egwbQG_WbwvgV_himNHSfOlC2ZOVdJtlU0_lqb3ng1; ai_session=+7T/P|1514906143332|1514906742861.81; .AspNet.ApplicationCookie=P4EYUnjorDS3CbcgWNa00LsgoDwSaKKeex3No31xyYCZQ_DSzUDNJw7MVbuW3IMT3P2IQC-U1OGxJZHe83E1rI-rfBHMrcOwwj9Edm0ANUuk2alTREFcQ7yhYHOsi9UH1Frs-7LuDHzXxJgKCfUUSTMb1BeKsia98bP3JmwgwCvHkKfRv1iQIOSLiAS0Z-NnfCpkuPhk6D6udhbs1Wn-BxZI4uGhd-7BW--3JByGrFLIw2bX07pnl9vK6p3wMsDhG5zaRHisck9RB9wfvp-38ox3xbHNtlzYbNonTWykfSL8EGR3fU9TvhvVO4S7QACstOW6phP_wxOmVxUJZ_XwkeFzY2mes1rURf0zWKaKtzbwEX4VH-oGZRy09u_HkjzjiZv5WUwFxT4ZGJUZo6ECDztUQ9nysUj1j8-voP6GTKfb6qWs3Le6z9hRbgN0onbmEC8f5yVf9MWTJmrHsDOL8DYmozjTuM_r17kA7dzAxNR0GzILAImGyMoqp7Y9POPaMKpmqrAGa9gqHeh3Vh91Ow&#xD;&#xA;HTTP_HOST:localhost:25635&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: keep-alive&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: ai_user=dirbR|2017-11-29T18:31:59.709Z; ASP.NET_SessionId=lvr03xlzgvgefo3dwknd0kuj; __RequestVerificationToken=eQvKUL2BKY93VWVWCHp-wyPKQ-hUkfakeA_9G8sjedobsDmHPJU3eCh4ADzOfOJQs8egwbQG_WbwvgV_himNHSfOlC2ZOVdJtlU0_lqb3ng1; ai_session=+7T/P|1514906143332|1514906742861.81; .AspNet.ApplicationCookie=P4EYUnjorDS3CbcgWNa00LsgoDwSaKKeex3No31xyYCZQ_DSzUDNJw7MVbuW3IMT3P2IQC-U1OGxJZHe83E1rI-rfBHMrcOwwj9Edm0ANUuk2alTREFcQ7yhYHOsi9UH1Frs-7LuDHzXxJgKCfUUSTMb1BeKsia98bP3JmwgwCvHkKfRv1iQIOSLiAS0Z-NnfCpkuPhk6D6udhbs1Wn-BxZI4uGhd-7BW--3JByGrFLIw2bX07pnl9vK6p3wMsDhG5zaRHisck9RB9wfvp-38ox3xbHNtlzYbNonTWykfSL8EGR3fU9TvhvVO4S7QACstOW6phP_wxOmVxUJZ_XwkeFzY2mes1rURf0zWKaKtzbwEX4VH-oGZRy09u_HkjzjiZv5WUwFxT4ZGJUZo6ECDztUQ9nysUj1j8-voP6GTKfb6qWs3Le6z9hRbgN0onbmEC8f5yVf9MWTJmrHsDOL8DYmozjTuM_r17kA7dzAxNR0GzILAImGyMoqp7Y9POPaMKpmqrAGa9gqHeh3Vh91Ow&#xD;&#xA;Host: localhost:25635&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36&#xD;&#xA;Upgrade-Insecure-Requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="admin@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="admin@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="off" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/elmah" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="C:\Users\Patryk\Source\Repos\PostawNaMilion\PostawNaMilionAzure\PostawNaMilionAzure\elmah" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="6158" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/elmah" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="25635" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="0" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/elmah" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="keep-alive" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="pl-PL,pl;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="ai_user=dirbR|2017-11-29T18:31:59.709Z; ASP.NET_SessionId=lvr03xlzgvgefo3dwknd0kuj; __RequestVerificationToken=eQvKUL2BKY93VWVWCHp-wyPKQ-hUkfakeA_9G8sjedobsDmHPJU3eCh4ADzOfOJQs8egwbQG_WbwvgV_himNHSfOlC2ZOVdJtlU0_lqb3ng1; ai_session=+7T/P|1514906143332|1514906742861.81; .AspNet.ApplicationCookie=P4EYUnjorDS3CbcgWNa00LsgoDwSaKKeex3No31xyYCZQ_DSzUDNJw7MVbuW3IMT3P2IQC-U1OGxJZHe83E1rI-rfBHMrcOwwj9Edm0ANUuk2alTREFcQ7yhYHOsi9UH1Frs-7LuDHzXxJgKCfUUSTMb1BeKsia98bP3JmwgwCvHkKfRv1iQIOSLiAS0Z-NnfCpkuPhk6D6udhbs1Wn-BxZI4uGhd-7BW--3JByGrFLIw2bX07pnl9vK6p3wMsDhG5zaRHisck9RB9wfvp-38ox3xbHNtlzYbNonTWykfSL8EGR3fU9TvhvVO4S7QACstOW6phP_wxOmVxUJZ_XwkeFzY2mes1rURf0zWKaKtzbwEX4VH-oGZRy09u_HkjzjiZv5WUwFxT4ZGJUZo6ECDztUQ9nysUj1j8-voP6GTKfb6qWs3Le6z9hRbgN0onbmEC8f5yVf9MWTJmrHsDOL8DYmozjTuM_r17kA7dzAxNR0GzILAImGyMoqp7Y9POPaMKpmqrAGa9gqHeh3Vh91Ow" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:25635" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="ai_user">
+      <value string="dirbR|2017-11-29T18:31:59.709Z" />
+    </item>
+    <item name="ASP.NET_SessionId">
+      <value string="lvr03xlzgvgefo3dwknd0kuj" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="eQvKUL2BKY93VWVWCHp-wyPKQ-hUkfakeA_9G8sjedobsDmHPJU3eCh4ADzOfOJQs8egwbQG_WbwvgV_himNHSfOlC2ZOVdJtlU0_lqb3ng1" />
+    </item>
+    <item name="ai_session">
+      <value string="+7T/P|1514906143332|1514906742861.81" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="P4EYUnjorDS3CbcgWNa00LsgoDwSaKKeex3No31xyYCZQ_DSzUDNJw7MVbuW3IMT3P2IQC-U1OGxJZHe83E1rI-rfBHMrcOwwj9Edm0ANUuk2alTREFcQ7yhYHOsi9UH1Frs-7LuDHzXxJgKCfUUSTMb1BeKsia98bP3JmwgwCvHkKfRv1iQIOSLiAS0Z-NnfCpkuPhk6D6udhbs1Wn-BxZI4uGhd-7BW--3JByGrFLIw2bX07pnl9vK6p3wMsDhG5zaRHisck9RB9wfvp-38ox3xbHNtlzYbNonTWykfSL8EGR3fU9TvhvVO4S7QACstOW6phP_wxOmVxUJZ_XwkeFzY2mes1rURf0zWKaKtzbwEX4VH-oGZRy09u_HkjzjiZv5WUwFxT4ZGJUZo6ECDztUQ9nysUj1j8-voP6GTKfb6qWs3Le6z9hRbgN0onbmEC8f5yVf9MWTJmrHsDOL8DYmozjTuM_r17kA7dzAxNR0GzILAImGyMoqp7Y9POPaMKpmqrAGa9gqHeh3Vh91Ow" />
+    </item>
+  </cookies>
+</error>

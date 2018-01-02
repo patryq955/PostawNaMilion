@@ -38,7 +38,7 @@
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Panel Administratora", "Index", "AdminManageCategory")</li>
+                        <li>@Html.ActionLink("Panel Administratora", "Index", "AdminManage")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

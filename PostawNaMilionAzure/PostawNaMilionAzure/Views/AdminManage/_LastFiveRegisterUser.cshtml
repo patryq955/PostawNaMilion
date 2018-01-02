@@ -16,19 +16,11 @@
                     <th>
                         Nazwa użytkownika
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </th>
-                    <th>
-                        Numer Telefonu
-                    </th>
                 </tr>
                 @foreach (var user in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(x => user.Logins)</td>
-                        <td>@Html.DisplayFor(x => user.Email)</td>
-                        <td>@Html.DisplayFor(x => user.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(x => user.UserName)</td>
                     </tr>
                 }
             </table>

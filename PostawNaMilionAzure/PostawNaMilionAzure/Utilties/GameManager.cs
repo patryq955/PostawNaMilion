@@ -1,4 +1,5 @@
-﻿using PostawNaMilionAzure.Exception;
+﻿using NLog;
+using PostawNaMilionAzure.Exceptions;
 using PostawNaMilionAzure.Models;
 using PostawNaMilionAzure.Repository;
 using PostawNaMilionAzure.ViewModel;
@@ -22,7 +23,7 @@ namespace PostawNaMilionAzure.Utilties
         public GameManager(ISessionManager sessionManager, IRepository<CategoryDict> categoryDictRepository
             , IExtendRepository<Question> quetionRepository, IRepository<Answer> answerRepository
             , IRepository<Game> gameRepository
-            ,IRepository<StepAddSubTotalValue> stepAddSubTotalValueRepository)
+            , IRepository<StepAddSubTotalValue> stepAddSubTotalValueRepository)
         {
             _sessionManager = sessionManager;
             _categoryDictRepository = categoryDictRepository;
@@ -90,7 +91,7 @@ namespace PostawNaMilionAzure.Utilties
             }
             catch (GameException e)
             {
-                vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
+                vM = new GameViewModel(((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
                 vM.TypeResultGame = TypeResultGame.LostGame;
                 _sessionManager.Set(GameCommon.ErrorMessage, e.Message);
             }
@@ -101,7 +102,7 @@ namespace PostawNaMilionAzure.Utilties
         {
             if (vM == null)
             {
-                vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
+                vM = new GameViewModel(((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
             }
 
             vM.CategoryDict = RandCategory();
@@ -112,7 +113,7 @@ namespace PostawNaMilionAzure.Utilties
 
         public GameViewModel GetQuestion(int categoryID)
         {
-            var vM = new GameViewModel( ((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
+            var vM = new GameViewModel(((StepAddSubTotalValueRepository)_stepAddSubTotalValueRepository).GetLastValue().StepValue);
             vM.Question = RandQuestion(categoryID);
             vM.NumberQuestion = GetNumberQuestion();
             vM.SumValue = GetSumValue();
@@ -260,10 +261,10 @@ namespace PostawNaMilionAzure.Utilties
             {
                 return TypeResultGame.LostGame;
             }
-            return vM.NumberQuestion> 8 ? TypeResultGame.WinGame : TypeResultGame.NextQuestion;
+            return vM.NumberQuestion > 8 ? TypeResultGame.WinGame : TypeResultGame.NextQuestion;
         }
 
-        private void SaveSession(GameViewModel vM,int questionID)
+        private void SaveSession(GameViewModel vM, int questionID)
         {
             var listAnswer = _sessionManager.Get<List<int>>(GameCommon.ListAnswer);
             listAnswer.Add(questionID);

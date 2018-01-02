@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
-using PostawNaMilionAzure.Exception;
+using NLog;
+using PostawNaMilionAzure.Exceptions;
 using PostawNaMilionAzure.Models;
 using PostawNaMilionAzure.Repository;
 using PostawNaMilionAzure.Utilties;
@@ -20,6 +21,7 @@ namespace PostawNaMilionAzure.Controllers
         private ISessionManager _sessionManager;
         private IRepository<Game> _gameRepository;
         private GameManager _gameManager;
+        private static Logger _log;
 
         public GameController(IExtendRepository<Question> questionRepository, IRepository<Answer> answerRepository,
          IRepository<CategoryDict> categoryDictRepository, ISessionManager sessionManager,
@@ -30,17 +32,14 @@ namespace PostawNaMilionAzure.Controllers
             _answerRepository = answerRepository;
             _categoryDictRepository = categoryDictRepository;
             _sessionManager = sessionManager;
+            _log = LogManager.GetCurrentClassLogger();
             _gameRepository = gameRepository;
             _gameManager = new GameManager(_sessionManager,
                                             _categoryDictRepository,
-                                            _questionRepository, 
-                                            _answerRepository, 
+                                            _questionRepository,
+                                            _answerRepository,
                                             _gameRepository,
                                             stepAddSubTotalValueRepository);
-        }
-        public ActionResult NewGame()
-        {
-            return View();
         }
         public ActionResult NewGame()
         {
@@ -59,6 +58,7 @@ namespace PostawNaMilionAzure.Controllers
         {
             if (_sessionManager.Get<string>(GameCommon.ErrorMessage) != null)
             {
+                _log.Info("Gracz " + User.Identity.Name + " - " + _sessionManager.Get<string>(GameCommon.ErrorMessage));
                 return PartialView("ErrorPage", _sessionManager.Get<string>(GameCommon.ErrorMessage));
             }
             if (User.Identity.IsAuthenticated)
@@ -89,6 +89,7 @@ namespace PostawNaMilionAzure.Controllers
             }
             catch (GameException e)
             {
+                _log.Info("Gracz " + User.Identity.Name + " - " + e.Message);
                 return PartialView("_ErrorPage", e.Message);
 
             }
@@ -105,6 +106,7 @@ namespace PostawNaMilionAzure.Controllers
             }
             catch (GameException e)
             {
+                _log.Info("Gracz " + User.Identity.Name + " - " + e.Message);
                 return PartialView("_ErrorPage", e.Message);
             }
 

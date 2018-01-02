@@ -1,23 +1,5 @@
 ﻿//Variable
 
-function showFancyBox() {
-
-    $("#fancybox").fancybox({
-        closeBtn: false, // hide close button
-        closeClick: false, // prevents closing when clicking INSIDE fancybox
-
-        helpers: {
-            // prevents closing when clicking OUTSIDE fancybox
-            overlay: { closeClick: false }
-        },
-        keys: {
-            // prevents closing when press ESC button
-            close: null
-        }
-    }).trigger('click');
-
-};
-
 function checkTimer() {
     window.setInterval(function () {
         var value = $(".svg-hexagonal-counter h2");

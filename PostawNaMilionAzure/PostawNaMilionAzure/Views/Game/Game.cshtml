@@ -14,36 +14,13 @@
     @Html.Partial("_Question")
 </div>
 
-@*<div id="fancybox" style="width:400px;height:200px">
-        <div class="row">
-            @foreach (var category in Model.CategoryDict)
-                {
-            <div class="col-md-6">
-                <input type="submit" value="@category.Description" id="choice-category" data-id="@category.Id" />
-            </div>
-            }
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <input type="submit" value="Zakończ grę" class="btn btn-danger" />
-
-            </div>
-
-        </div>
-
-    </div>*@
 @section scripts{
     <script src="~/Scripts/svgTimer.js"></script>
-    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
-    <link href="~/Content/jquery.fancybox-buttons.css" rel="stylesheet" />
-    <link href="~/Content/jquery.fancybox-thumbs.css" rel="stylesheet" />
     <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
-    <script src="~/Scripts/jquery.fancybox.pack.js"></script>
     <script src="~/Scripts/Game.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            showFancyBox();
             checkTimer();
         });
 
@@ -58,7 +35,6 @@
             })
             .done(function (partialVIew) {
                 $("#game-partial").html(partialVIew);
-                parent.jQuery.fancybox.close();
                 loadSumValue();
             });
         });

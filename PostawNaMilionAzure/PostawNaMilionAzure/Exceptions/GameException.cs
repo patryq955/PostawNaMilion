@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PostawNaMilionAzure.Exception
+namespace PostawNaMilionAzure.Exceptions
 {
-    public class GameException : System.Exception
+    public class GameException : Exception
     {
         public GameException(string message): base(message)
         {

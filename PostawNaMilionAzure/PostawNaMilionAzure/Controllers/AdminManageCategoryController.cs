@@ -13,23 +13,13 @@ namespace PostawNaMilionAzure.Controllers
         private IRepository<CategoryDict> _categoryDictRepository;
         private IRepository<KnowledgeArea> _knowledgeAreaRepository;
 
-        private AzureContext _db = new AzureContext(); // do poprawy
-
         public AdminManageCategoryController(IRepository<CategoryDict> categoryDictRepository
             , IRepository<KnowledgeArea> knowledgeAreaRepository, ITarget mapper) : base(mapper)
         {
             _categoryDictRepository = categoryDictRepository;
             _knowledgeAreaRepository = knowledgeAreaRepository;
         }
-        //Get: Main page 
-        public ActionResult Index()
-        {
-            var lastRegisterUser = _db.Users.Where(x => x.Id != "2f94a417-4a2d-4161-aa5a-fa20557490ff").
-                                                    Take(5).ToList();
-            ViewBag.IsRegisterUser = lastRegisterUser.Count > 0 ? true : false;
-            return View(lastRegisterUser);
 
-        }
 
         //Get Add Category
         [HttpGet]

@@ -11,6 +11,7 @@ namespace PostawNaMilionAzure.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name ="Wartość do obstawiania")]
         public int StepValue { get; set; }
 
         public DateTime DateAdd { get; set; }

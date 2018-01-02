@@ -187,12 +187,10 @@ textarea.input-validation-error {
   z-index: -1;
   background-position: center;
   background-size: 80%;
-  background-image: url("../../AppImage/maxresdefault.jpg");
-  /*img {
-        max-height: 400px;
-        z-index: -1;
-        position: absolute;
-    }*/ }
+  background-image: url("../../AppImage/maxresdefault.jpg"); }
+  @media screen and (max-width: 768px) {
+    .game-photo {
+      height: 200px; } }
 
 .game-question {
   background-color: rgba(117, 162, 237, 0.7);
@@ -262,6 +260,9 @@ textarea.input-validation-error {
   font-size: 50px;
   font-weight: bold;
   color: #ffd800; }
+  @media screen and (max-width: 768px) {
+    .game-sum {
+      font-size: 35px; } }
 
 .quantity-answer {
   cursor: default; }
@@ -269,4 +270,52 @@ textarea.input-validation-error {
   .quantity-answer .quantity-answer::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0; }
+
+@media screen and (max-width: 768px) {
+  .btn-category {
+    margin: 10px; } }
+
+.svg-hexagonal-counter {
+  position: relative;
+  float: left; }
+
+.svg-hexagonal-counter h2 {
+  text-align: center;
+  position: absolute;
+  line-height: 200px;
+  width: 100%; }
+  @media screen and (max-width: 768px) {
+    .svg-hexagonal-counter h2 {
+      line-height: 100px; } }
+
+/*svg {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}*/
+.svg-hexagonal-counter .counter {
+  width: 200px;
+  height: 240px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default; }
+  @media screen and (max-width: 768px) {
+    .svg-hexagonal-counter .counter {
+      width: 100px;
+      height: 120px; } }
+
+.svg-hexagonal-counter .counter .track,
+.svg-hexagonal-counter .counter .fill {
+  fill: transparent;
+  stroke-width: 30;
+  transform: translate(290px, 800px) rotate(-120deg); }
+
+.svg-hexagonal-counter .counter .fill {
+  stroke: white;
+  stroke-linecap: round;
+  stroke-dasharray: 2160;
+  stroke-dashoffset: 2160; }
 

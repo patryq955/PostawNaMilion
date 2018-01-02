@@ -10,11 +10,10 @@
     background-position: center;
     background-size: 80%;
     background-image: url('../../AppImage/maxresdefault.jpg');
-    /*img {
-        max-height: 400px;
-        z-index: -1;
-        position: absolute;
-    }*/
+
+    @media screen and (max-width: $phone) {
+        height: 200px;
+    }
 }
 
 .game-question {
@@ -101,11 +100,15 @@
     font-size: 50px;
     font-weight: bold;
     color: #ffd800;
+
+    @media screen and (max-width: $phone) {
+        font-size: 35px;
+    }
 }
 
 
 .quantity-answer {
-    cursor:default;
+    cursor: default;
 
 
     .quantity-answer::-webkit-inner-spin-button,
@@ -113,4 +116,65 @@
         -webkit-appearance: none;
         margin: 0;
     }
+}
+
+
+.btn-category {
+    @media screen and (max-width: $phone) {
+        margin: 10px;
+    }
+}
+
+
+.svg-hexagonal-counter {
+    position: relative;
+    float: left;
+}
+
+.svg-hexagonal-counter h2 {
+    text-align: center;
+    position: absolute;
+    line-height: 200px;
+    width: 100%;
+
+    @media screen and (max-width: $phone) {
+        line-height: 100px;
+    }
+}
+
+/*svg {
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}*/
+
+
+.svg-hexagonal-counter .counter {
+    width: 200px;
+    height: 240px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+
+    @media screen and (max-width: $phone) {
+        width: 100px;
+        height: 120px;
+    }
+}
+
+.svg-hexagonal-counter .counter .track,
+.svg-hexagonal-counter .counter .fill {
+    fill: rgba(0, 0, 0, 0);
+    stroke-width: 30;
+    transform: translate(290px, 800px)rotate(-120deg);
+}
+
+.svg-hexagonal-counter .counter .fill {
+    stroke: rgb(255, 255, 255);
+    stroke-linecap: round;
+    stroke-dasharray: 2160;
+    stroke-dashoffset: 2160;
 }
