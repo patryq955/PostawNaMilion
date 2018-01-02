@@ -60,6 +60,7 @@ namespace PostawNaMilionAzure.Utilties
             {
                 throw new GameException("Błedna suma");
             }
+
             var tmp = _sessionManager.Get<Int32>(GameCommon.ControlQuestionID);
             if (questionID != _sessionManager.Get<Int32>(GameCommon.ControlQuestionID))
             {
@@ -72,7 +73,7 @@ namespace PostawNaMilionAzure.Utilties
             {
                 vM.SumValue += CheckAnswer(questionID, Int32.Parse(x.Key)) ? float.Parse(x.Value) : 0;
             });
-
+            vM.SumValue = answers.ToList().Where(x => float.Parse(x.Value) == 0).Count() == 0 ? 0 : vM.SumValue;
             //Save session
             SaveSession(vM, questionID);
 

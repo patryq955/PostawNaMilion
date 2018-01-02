@@ -319,3 +319,7 @@ textarea.input-validation-error {
   stroke-dasharray: 2160;
   stroke-dashoffset: 2160; }
 
+.info-game {
+  font-weight: bold;
+  padding: 10px; }
+
