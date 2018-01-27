@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PostawNaMilionAzure.Repository
 {
-    public class GameRepository : IRepository<Game>
+    public class GameRepository : IExtendRepository<Game>
     {
         AzureContext db;
         public GameRepository()
@@ -31,6 +31,11 @@ namespace PostawNaMilionAzure.Repository
             return db.Game.Where(x => x.Id == id).FirstOrDefault();
         }
 
+        public Game GetIdAll(int id)
+        {
+            return db.Game.Include(x => x.User).Where(x => x.Id == id).FirstOrDefault();
+        }
+
         public IEnumerable<Game> GetOverview(Func<Game, bool> predicate = null)
         {
             if (predicate == null)
@@ -39,6 +44,16 @@ namespace PostawNaMilionAzure.Repository
             }
 
             return db.Game.Where(predicate);
+        }
+
+        public IEnumerable<Game> GetOverviewAll(Func<Game, bool> predicate = null)
+        {
+            if (predicate == null)
+            {
+                return db.Game.Include(x => x.User);
+            }
+
+            return db.Game.Include(x => x.User).Where(predicate);
         }
 
         public void Update(Game entity)

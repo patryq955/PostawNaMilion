@@ -1,4 +1,6 @@
 ﻿using NLog;
+using PostawNaMilionAzure.Models;
+using PostawNaMilionAzure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;

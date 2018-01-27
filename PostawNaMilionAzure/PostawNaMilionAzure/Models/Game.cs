@@ -16,5 +16,7 @@ namespace PostawNaMilionAzure.Models
         public DateTime Date { get; set; }
         public int StageEnd{ get; set; }
         public float Balance { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
     }
 }
