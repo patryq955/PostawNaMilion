@@ -19,9 +19,41 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <h2 class="text-center">Ostatnie 10 gier:</h2> 
+</div>
 <div class="row three-elements">
-    <div class="col-lg-6 col-sm-9 text-center">
-       
+    <div class="text-center">
+        @if (Model == null || Model.Count == 0)
+        {
+            @:Brak gier w ostatnim czasie
+        }
+        else
+        {
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        Nick
+                    </td>
+                    <td>
+                        Kwota
+                    </td>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.User.Email
+                        </td>
+                        <td>
+                            @item.StageEnd
+                        </td>
+                    </tr>
+
+                }
+            </table>
+        }
 
     </div>
 

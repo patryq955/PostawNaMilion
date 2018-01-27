@@ -1,0 +1,55 @@
+﻿@model List<PostawNaMilionAzure.Models.Game>
+@{
+    ViewBag.Title = "LastGame";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @if (Model == null || Model.Count == 0)
+    {
+        <div class="row">
+            <p>Brak rozegranych gier</p>
+        </div>
+
+    }
+    else
+    {
+        <div class="row">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Data gry
+                        </th>
+                        <th>
+                            Numer pytania
+                        </th>
+                        <th>
+                            Wygrana
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                {
+                        <tr>
+                            <td>
+                                @item.Date
+                            </td>
+                            <td>
+                                @item.StageEnd
+                            </td>
+                            <td>
+                                @item.Balance
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+   
+
+</div>
+
+

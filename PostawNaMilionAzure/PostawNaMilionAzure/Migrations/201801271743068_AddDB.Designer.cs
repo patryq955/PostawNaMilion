@@ -7,13 +7,13 @@ namespace PostawNaMilionAzure.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddNewTable : IMigrationMetadata
+    public sealed partial class AddDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNewTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712062128440_AddNewTable"; }
+            get { return "201801271743068_AddDB"; }
         }
         
         string IMigrationMetadata.Source

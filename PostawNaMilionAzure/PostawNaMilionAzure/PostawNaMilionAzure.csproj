@@ -306,43 +306,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712062059279_InitMigration.cs" />
-    <Compile Include="Migrations\201712062059279_InitMigration.Designer.cs" />
-    <Compile Include="Migrations\201712062109124_InitMigrationString.cs" />
-    <Compile Include="Migrations\201712062109124_InitMigrationString.Designer.cs" />
-    <Compile Include="Migrations\201712062128440_AddNewTable.cs" />
-    <Compile Include="Migrations\201712062128440_AddNewTable.Designer.cs" />
-    <Compile Include="Migrations\201712091043067_InitUserControl.cs" />
-    <Compile Include="Migrations\201712091043067_InitUserControl.Designer.cs">
-      <DependentUpon>201712091043067_InitUserControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712091758016_EditCategoryDict.cs" />
-    <Compile Include="Migrations\201712091758016_EditCategoryDict.Designer.cs">
-      <DependentUpon>201712091758016_EditCategoryDict.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712101555188_ChangeQuestion.cs" />
-    <Compile Include="Migrations\201712101555188_ChangeQuestion.Designer.cs">
-      <DependentUpon>201712101555188_ChangeQuestion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712101600168_ChangeAnswer.cs" />
-    <Compile Include="Migrations\201712101600168_ChangeAnswer.Designer.cs">
-      <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.cs" />
-    <Compile Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.Designer.cs">
-      <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712202026441_EditEndGame.cs" />
-    <Compile Include="Migrations\201712202026441_EditEndGame.Designer.cs">
-      <DependentUpon>201712202026441_EditEndGame.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712202047519_EditEndGamev2.cs" />
-    <Compile Include="Migrations\201712202047519_EditEndGamev2.Designer.cs">
-      <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712271938234_AddStepTotalValue.cs" />
-    <Compile Include="Migrations\201712271938234_AddStepTotalValue.Designer.cs">
-      <DependentUpon>201712271938234_AddStepTotalValue.cs</DependentUpon>
+    <Compile Include="Migrations\201801271743068_AddDB.cs" />
+    <Compile Include="Migrations\201801271743068_AddDB.Designer.cs">
+      <DependentUpon>201801271743068_AddDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CategoryDict.cs" />
@@ -365,6 +331,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModel\AddCategoryViewModel.cs" />
     <Compile Include="ViewModel\GameViewModel.cs" />
+    <Compile Include="ViewModel\LastGameViewModel.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\UserRate.cs" />
@@ -559,6 +526,10 @@
     <Content Include="Views\Game\ErrorPage.cshtml" />
     <Content Include="Views\Game\_ErrorPage.cshtml" />
     <Content Include="Views\AdminManage\SetStepTotalValue.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Game\LastGame.cshtml" />
+    <Content Include="Views\AdminManage\ValueGame.cshtml" />
+    <Content Include="Views\AdminManage\_ValueGame.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -574,38 +545,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712062059279_InitMigration.resx">
-      <DependentUpon>201712062059279_InitMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712062109124_InitMigrationString.resx">
-      <DependentUpon>201712062109124_InitMigrationString.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712062128440_AddNewTable.resx">
-      <DependentUpon>201712062128440_AddNewTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712091043067_InitUserControl.resx">
-      <DependentUpon>201712091043067_InitUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712091758016_EditCategoryDict.resx">
-      <DependentUpon>201712091758016_EditCategoryDict.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712101555188_ChangeQuestion.resx">
-      <DependentUpon>201712101555188_ChangeQuestion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712101600168_ChangeAnswer.resx">
-      <DependentUpon>201712101600168_ChangeAnswer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712111910525_ChangeQUestionAddCOllectionAnswer.resx">
-      <DependentUpon>201712111910525_ChangeQUestionAddCOllectionAnswer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712202026441_EditEndGame.resx">
-      <DependentUpon>201712202026441_EditEndGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712202047519_EditEndGamev2.resx">
-      <DependentUpon>201712202047519_EditEndGamev2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712271938234_AddStepTotalValue.resx">
-      <DependentUpon>201712271938234_AddStepTotalValue.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801271743068_AddDB.resx">
+      <DependentUpon>201801271743068_AddDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

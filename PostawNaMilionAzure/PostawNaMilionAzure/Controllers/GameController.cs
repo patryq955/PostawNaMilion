@@ -19,13 +19,13 @@ namespace PostawNaMilionAzure.Controllers
         private IRepository<Answer> _answerRepository;
         private IRepository<CategoryDict> _categoryDictRepository;
         private ISessionManager _sessionManager;
-        private IRepository<Game> _gameRepository;
+        private IExtendRepository<Game> _gameRepository;
         private GameManager _gameManager;
         private static Logger _log;
 
         public GameController(IExtendRepository<Question> questionRepository, IRepository<Answer> answerRepository,
          IRepository<CategoryDict> categoryDictRepository, ISessionManager sessionManager,
-         IRepository<Game> gameRepository,
+         IExtendRepository<Game> gameRepository,
          IRepository<StepAddSubTotalValue> stepAddSubTotalValueRepository)
         {
             _questionRepository = questionRepository;
@@ -48,10 +48,19 @@ namespace PostawNaMilionAzure.Controllers
 
         public ActionResult Game()
         {
-            _gameManager.NewGame();
-            var vM = _gameManager.GetCategory();
-            vM.IsCategory = true;
-            return View(vM);
+            //try
+            //{
+                _gameManager.NewGame();
+                var vM = _gameManager.GetCategory();
+                vM.IsCategory = true;
+                return View(vM);
+            //}
+            //catch(Exception e)
+            //{
+            //    _log.Info("Gracz " + User.Identity.Name + " - " + e.Message);
+            //    return RedirectToAction("Error", "Home");
+            //}
+
         }
 
         public ActionResult LostGame()
@@ -128,6 +137,14 @@ namespace PostawNaMilionAzure.Controllers
         public ActionResult ErrorPage(string message)
         {
             return View(message);
+        }
+
+        [Authorize]
+        public ActionResult LastGame()
+        {
+            Func<Game, bool> predicate = x => x.UserId == User.Identity.GetUserId();
+            var allGame = _gameRepository.GetOverviewAll(predicate).OrderByDescending(x => x.Date).ToList();
+            return View(allGame);
         }
 
     }
